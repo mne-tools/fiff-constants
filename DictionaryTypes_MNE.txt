@@ -1,0 +1,101 @@
+# MGH Fiff tag dictionary (types)
+#
+# This is the complete dictionary.
+# MAY CONTAIN CONFIDENTIAL INFORMATION. DO NOT PUBLISH.
+# Copyright Elekta Neuromag Oy.
+# All rights reserved.
+# 
+# Syntax version 1.1
+#
+# $Revision: 1.2 $
+# $Log: DictionaryTypesMGH.txt,v $
+# Revision 1.2  2007/11/20 07:37:47  jne
+# Extensions to version 1.2
+#
+# Revision 1.1  2005/03/04 09:42:35  mjk
+# Initial revision
+#
+# 
+#======================================================================
+#======================================================================
+# Reserved for MNE estimates (MHä&MGH)
+#     
+# This range is reserved for MGH and Matti Hämäläinen for developing
+# MNE software.
+#
+# THESE TYPES ARE POTENTIALLY CONFIDENTIAL INFORMATION.
+# DO NOT PUBLISH WITHOUT PERMISSION.
+#
+#======================================================================
+
+
+enum(mne_ori) "Fiff values associated with MNE computations"
+{
+	fixed    1   "Source orientations are fixed"
+	free     2   "Source orientations are free"
+}
+
+#
+# SHOULD SWITCH C-DEFINES:
+# 	FIFFV_MNE_FIXED_ORI -> FIFFV_MNE_ORI_FIXED
+#	FIFFV_MNE_FREE_ORI  -> FIFFV_MNE_ORI_FREE
+
+#??
+
+#define FIFFV_MNE_MEG                    1   ""
+#define FIFFV_MNE_EEG                    2   ""
+#define FIFFV_MNE_MEG_EEG                3   ""
+
+enum(mne_priors) "MNE priors"
+{
+	none    0   ""
+	depth	1   ""
+        loreta  2   ""
+        sulci   3   ""
+}
+
+enum(covariance_type)
+{
+	mne_unknown            0	"Undefined"
+	mne_noise              1        "Noise covariance"
+	mne_source             2        "Source covariance"
+	mne_fmri_prior         3        "FMRI priors as a covariance matrix"
+	mne_signal             4        "Signal covariance"
+	mne_depth_prior	       5	""
+	mne_orient_prior       6	""
+}
+
+alias_enum(mne_cov) covariance_type
+
+
+enum(mne_lin_proj) "Linear projection applied"
+{
+	none          0          "Linear projection not applied"
+        meas_info     1          "The projection in meas info applied"
+        in_block      2          "The projection in data block applied"
+}
+
+
+enum (mne_map) "MNE output map type"
+{
+	unknown                      0     "Unspecified"
+	scalar_current               1     "Scalar current value"
+	scalar_current_size          2     "Absolute value of the above"
+	vector_current               3     "Current vector components"
+	vector_current_size          4     "Vector current size"
+	t_stat                       5     "Student's t statistic"
+	f_stat                       6     "F statistic"
+	f_stat_sqrt                  7     "Square root of the F statistic"
+	chi2_stat                    8     "(Approximate) chi^2 statistic"
+	chi2_stat_sqrt               9     "Square root of the (approximate) chi^2 statistic"
+	scalar_current_noise        10     "Current noise approximation (scalar)"
+	vector_current_noise        11     "Current noise approximation (vector)"
+}
+
+enum (mne_surf) "MNE surface type"
+{
+	unknown                     -1     "Unspecified"
+	mne_surf_left_hemi	    101    ""
+	mne_surf_right_hemi	    102    ""
+	mne_surf_meg_helmet	    201    ""
+}

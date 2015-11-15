@@ -1,0 +1,124 @@
+# MGH FIFF tag dictionary.
+#
+# This is the complete dictionary.
+# CONTAINS CONFIDENTIAL INFORMATION. DO NOT PUBLISH.
+# Copyright Elekta Neuromag Oy.
+# All rights reserved.
+#
+# Syntax version 1.1
+#
+# $Revision: 1.2 $
+# $Log: DictionaryTagsMGH.txt,v $
+# Revision 1.2  2007/11/20 07:35:08  jne
+# Extensions to version 1.2
+#
+# Revision 1.1  2005/03/04 09:53:01  mjk
+# Initial revision
+#
+#======================================================================
+
+#======================================================================
+#               3500...
+#               3999          Reserved for MNE estimates (MHä)
+#     
+# This range is reserved for MGH and Matti Hämäläinen for developing
+# MNE software.
+#
+# THIS TAG RANGE IS POTENTIALLY CONFIDENTIAL INFORMATION.
+# DO NOT PUBLISH WITHOUT PERMISSION.
+#
+#======================================================================
+
+#<reserved>		3500    -           "Reserved"
+xplotter_layout         3501	string      "Xplotter layout tag   !!!!!! Overlap"
+
+# Fiff tags associated with MNE computations
+
+#
+# 3500... Bookkeeping
+#
+
+mne_row_names           3502    string
+mne_col_names           3503    string
+mne_nrow                3504    int
+mne_ncol                3505    int
+mne_coord_frame         3506    enum(?)   "Coordinate frame employed. Defaults:
+                                                      * FIFFB_MNE_SOURCE_SPACE       FIFF_COORD_MRI
+                                                      * FIFFB_MNE_FORWARD_SOLUTION   FIFF_COORD_HEAD
+                                                      * FIFFB_MNE_INVERSE_SOLUTION   FIFF_COORD_HEAD"
+mne_ch_name_list        3507   string
+mne_file_name           3508   string     ""    /* This removes the collision with fiff_file.h  (used to be 3501) */
+
+#
+# 3510... Source space
+#
+
+mne_source_space_points       3510 ? ""
+mne_source_space_normals      3511 ? ""
+mne_source_space_npoints      3512 ? ""
+mne_source_space_selection    3513 ? ""
+mne_source_space_nuse         3514 ? ""
+mne_source_space_nearest      3515 ? "Nearest source space vertex for all vertices"
+mne_source_space_nearest_dist 3516 ? "Distance to the Nearest source space vertex for all vertices"
+
+#
+# 3520... Forward solution
+#
+
+mne_forward_solution     3520 ? ""
+mne_source_orientation   3521 ? ""   /* Fixed or free */
+mne_included_methods     3522 ? ""
+
+#
+# 3530... Covariance matrix
+#
+
+mne_cov_kind             3530 enum(mne_cov) "What kind of a covariance matrix"
+mne_cov_dim              3531 ? "Matrix dimension"
+mne_cov                  3532 ? "Full matrix in packed representation (lower triangle)"
+mne_cov_diag             3533 ? "Diagonal matrix"
+mne_cov_eigenvalues      3534 ? "Eigenvalues and eigenvectors of the above"
+mne_cov_eigenvectors     3535 ? ""
+
+/*
+ * 3540... Inverse operator
+"
+
+/*
+ * We store the inverse operator as the eigenleads, eigenfields,
+ * and weights
+"
+mne_inverse_leads        3540 ?  "The eigenleads"
+mne_inverse_fields       3541 ?  "The eigenfields"
+mne_inverse_sing         3542 ?  "The singular values"
+mne_priors_used          3543 enum(mne_priors)  "Which kind of priors have been used for the source covariance matrix"
+mne_inverse_full         3544 ?  "Inverse operator as one matrix 
+                                                      * This matrix includes the whitening operator as well 
+                                                      * The regularization is applied"
+mne_inverse_source_orientations  3545 enum(mne_ori)  "Contains the orientation of one source per row 
+                                                      * The source orientations must be expressed in the coordinate system
+                                                      * given by FIFF_MNE_COORD_FRAME"
+#
+# 3550... Saved environment info
+#
+
+mne_env_working_dir      3550  string  "Working directory where the file was created"
+mne_env_command_line     3551  string   "The command used to create the file"
+
+#
+# 3560... Miscellaneous MNE
+#
+
+mne_lin_proj_applied     3560  ?  "Has the linear projection been applied to these data? "
+
+#
+# 3570... Vertex maps
+#
+
+mne_vertex_map          3570 ? "Mapping of closest vertices on the sphere"
+mne_vertex_map_from     3571 ? "Which subject is this map from"
+mne_vertex_map_to       3572 ? "Which subject is this map to"
+
+#<reserved>		3573	-           "Reserved for MNE sw. (MHä)"
+#...			...
+#<reserved>		3799    -           "Reserved for MNE sw. (MHä)"
