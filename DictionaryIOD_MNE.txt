@@ -1,10 +1,3 @@
-# MGH Fiff tag  (IOD) dictionary
-#
-# This is the complete dictionary.
-# MAY CONTAIN CONFIDENTIAL INFORMATION. DO NOT PUBLISH.
-# Copyright Elekta Neuromag Oy.
-# All rights reserved.
-#
 # Structured objects (blocks)
 # Syntax version 1.1
 #
@@ -19,13 +12,10 @@
 #======================================================================
 #======================================================================
 #               350...
-#               390          Reserved for MNE estimates (MHä)
+#               390          Reserved for MNE estimates
 #     
-# This range is reserved fot MGH and Matti Hämäläinen for developing
+# This range is reserved fot MGH and Matti Hamalainen for developing
 # MNE software.
-#
-# THIS TAG RANGE IS POTENTIALLY CONFIDENTIAL INFORMATION.
-# DO NOT PUBLISH WITHOUT PERMISSION.
 #
 #======================================================================
 
@@ -36,19 +26,23 @@ mne_source_space         351
 mne_forward_solution     352
 mne_parent_mri_file      353
 mne_parent_meas_file     354
-mne_cov                  355 
+mne_cov                  355
 mne_inverse_solution     356
 mne_named_matrix         357
 mne_env                  358
 mne_bad_channels         359
 mne_vertex_map           360
-mne_events		 361
-mne_morph_map		 362
+mne_events               361
+mne_morph_map            362
+mne_surface_map          363
+mne_surface_map_group    364
 
-mne_ctf_comp		 370
-mne_ctf_comp_data	 371
+mne_ctf_comp         370
+mne_ctf_comp_data    371
+mne_derivations      372
+mne_epochs           373
+mne_ica              374
 
-mne_derivations		 372
 
 
 #======================================================================
