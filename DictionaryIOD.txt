@@ -1,0 +1,148 @@
+# Fiff tag  (IOD) dictionary
+#
+# This is the complete dictionary.
+#
+# Copyright (C) Elekta Oy.
+# All rights reserved.
+#
+# Structured objects (blocks)
+# Syntax version 1.4
+#
+# $Revision: 1.13 $
+# $Log: DictionaryIOD.txt,v $
+# Revision 1.13  2018/07/02 05:19:30  jne
+# Packing revision 1.4
+#
+# Revision 1.12  2016/09/02 12:14:14  jne
+# added new sensor types and fNIRS tags
+#
+# Revision 1.11  2016/09/02 09:43:55  jne
+# added fiff_cov, sss_operator, ct_meas, sss_expansion
+#
+# Revision 1.10  2011/05/06 08:29:05  janne
+# Checking in earlier updates.
+#
+# Revision 1.9  2010/04/23 13:56:52  mjk
+# Added status_subsystem block reservation.
+#
+# Revision 1.8  2010/04/21 06:57:16  janne
+# Now consistent with the FrameMaker document.
+#
+# Revision 1.7  2010/04/20 09:59:04  janne
+# All the descriptions on single line.
+#
+# Revision 1.6  2007/11/20 07:37:27  jne
+# Syntex version 1.2
+#
+# Revision 1.5  2006/09/27 12:04:50  jne
+# Corrected some typos
+#
+# Revision 1.4  2006/08/30 10:28:45  jne
+# added definitions for smsh_raw_data, smsh_aspect, data_correction, 
+# channel_decoupler, sss_info, sss_cal_adjust, sss_st_info, sss_bases,
+# smartshield, processing_history, and processing_record
+#
+# Revision 1.3  2006/04/27 07:30:39  mjk
+# Minor cleanup
+#
+# Revision 1.2  2005/03/04 09:52:19  mjk
+# Removed MGH IODs, generalized mris to 3D volumes.
+#
+#======================================================================
+
+#
+# MEG/EEG
+# 
+
+root			999	tagged   "Root block of a file (has not been used so far)."
+meas			100	tagged   "Measurement"
+meas_info		101	tagged   "The information about the acquisition details."
+raw_data		102	tagged   "Raw data"
+processed_data		103	tagged   "Processed data"
+evoked			104	tagged   "Evoked response data"
+aspect			105	tagged   "Used within evoked block to include one aspect of evoked responses like standard average, alternating average, standard error of mean etc."
+subject			106	tagged   "Subject/patient information."
+isotrak			107	tagged   "Head digitization data"
+hpi_meas		108	tagged   "HPI measurement"
+hpi_result		109	tagged   "Result of a HPI fitting procedure.
+hpi_coil		110	tagged   "Data acquired from one HPI coil.
+project			111	tagged   "Information about the project under which the data were acquired."
+continuous_data		112	tagged   "Continuous data is processed raw data."
+void			114	tagged   "Nothing, reserved space, invalidated data etc."
+events			115	tagged   "Information about the events detected on the trigger channels during data acquisition."
+index			116	tagged   "An index of file id/file name pairs."
+dacq_pars		117	tagged   "The acquisition setup parameters."
+ref			118	tagged   "Reference mechanism."
+maxshield_raw_data	119     tagged   "Raw data collected with MaxShield system."
+maxshield_aspect	120     tagged   "Evoked data collected with MaxShield system."
+hpi_subsystem		121	tagged	 "Data about HPI subsystem structure and coding of related data bits."
+phantom_subsystem	122	tagged	 "Data about phantom subsystem structure and coding of related data bits."
+status_subsystem	123	tagged	 "Data about system status items and coding of related data bits."
+
+alias_iod(evoked)		mcg_ave
+alias_iod(maxshield_raw_data)	smsh_raw_data
+alias_iod(maxshield_aspect)	smsh_aspect
+
+
+#
+# Volume data: MRI, CT, etc.
+#
+
+structural_data		200	tagged   "One or more volume_data."
+volume_data		201	tagged   "Volume data, e.g. MRI/CT set, segmentation etc."
+volume_slice		202	tagged   "Slice of a volume, e.g. MRI/CT image"
+scenery			203	tagged   "A set of related (in DICOM terminology `secondary capture') images like the 3D renderings of the brain surface."
+scene			204	tagged   "One image of a scenery."
+mri_seg			205	tagged   "MRI segmentation data"
+mri_seg_region		206	tagged   "Descriptions of one segmented region."
+
+alias_iod(structural_data)  mri
+alias_iod(volume_data)      mri_set
+alias_iod(volume_slice)     mri_slice   
+alias_iod(scenery)          mri_scenery
+alias_iod(scene)            mri_scene
+
+#
+# Forward and inverse modelling
+#
+
+sphere			300	tagged	  "A spherically symmetric volume conductor description."
+bem			310	tagged	  "A boundary-element model (BEM) description."
+bem_surf		311	tagged	  "Describes one BEM surface."
+conductor_model		312	tagged	  "One or more conductor model descriptions."
+ssp			313	tagged    "The signal-space projection (SSP) data."
+ssp_item		314	tagged	  "One set of vectors of the SSP data."
+xfit_aux		315	tagged	  "Auxiliary data created by the source modelling program XFit."
+
+alias_iod(ssp)		xfit_proj
+alias_iod(ssp_item)	xfit_proj_item
+
+#======================================================================
+#			350...
+#			390          Reserved for MNE estimates (MHä)
+#======================================================================
+
+fiff_cov                355     tagged    "Covariance matrices"
+bad_channels		359	tagged	  "Bad channel namelist"
+
+vol_info		400	tagged    "Volume info"
+
+#
+# Sparse matrix, cross-talk correction, SSS and IAS blocks
+#
+
+data_correction		500	tagged	"Correction was done to data."
+channels_decoupler	501	tagged	"Cross-talk compensation information."
+sss_info		502	tagged	"SSS information."
+sss_cal_adjust		503	tagged	"SSS calibration adjustments."
+sss_st_info		504	tagged	"Information of the SSST parameters."
+sss_bases		505	tagged	"SSS basis matrices."
+sss_operator            506     tagged  "SSS operator matrices."
+ct_meas                 507     tagged  "Cross-talk measurement."
+sss_expansion           508     tagged  "SSS expansion info."
+smartshield		510	tagged	"IAS information."
+
+processing_history	900	tagged	"Processing history. Can contain multiple processing_record's"
+processing_record	901	tagged	"One processing record."
+
+alias_iod(maxshield)	smartshield
