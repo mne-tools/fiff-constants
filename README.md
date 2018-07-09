@@ -1,2 +1,3 @@
-# mne-fiff-constants
-Bookkeeping and documentation of MNE constants
+# fiff-constants
+
+Bookkeeping and documentation of FIFF file format constants.
