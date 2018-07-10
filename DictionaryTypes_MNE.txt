@@ -21,9 +21,10 @@
 
 enum(mne_ori) "Fiff values associated with MNE computations"
 {
-    unknown  0
-	fixed    1   "Source orientations are fixed"
-	free     2   "Source orientations are free"
+    unknown   0
+	fixed     1   "Source orientations are fixed"
+	free      2   "Source orientations are free"
+	fixed_cps 3   "Fixed orientation generated using information on cortical patch statistics"
 }
 
 #

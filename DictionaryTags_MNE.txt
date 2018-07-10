@@ -182,6 +182,7 @@ mne_epochs_selection        3800 ? "the epochs selection"
 mne_epochs_drop_log         3801 ? "the drop log"
 
 mne_annotations             3810 ? "raw annotations"
+mne_metadata                3811 ? "metadata dataframes"
 
 #...			...
-#<reserved>		3811    -   3999   "Reserved for MNE sw."
+#<reserved>		3812    -   3999   "Reserved for MNE sw."
