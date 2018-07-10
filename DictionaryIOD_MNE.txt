@@ -13,8 +13,8 @@
 #======================================================================
 #               350...
 #               390          Reserved for MNE estimates
-#     
-# This range is reserved fot MGH and Matti Hamalainen for developing
+#
+# This range is reserved for MGH and Matti Hamalainen for developing
 # MNE software.
 #
 #======================================================================
@@ -43,6 +43,10 @@ mne_derivations      372
 mne_epochs           373
 mne_ica              374
 
+# These were errantly added in the tag range rather than the block range,
+# but must be parsed like blocks.
 
+mne_annotations             3810
+mne_metadata                3811
 
 #======================================================================
