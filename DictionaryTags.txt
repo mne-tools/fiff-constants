@@ -1,0 +1,686 @@
+# Fiff tag dictionary.
+#
+# This is the complete dictionary.
+#
+# Copyright (C) Elekta Oy.
+# All rights reserved.
+#
+# Syntax version 1.4
+#
+# $Revision: 1.20 $
+# $Log: DictionaryTags.txt,v $
+# Revision 1.20  2018/07/02 05:19:30  jne
+# Packing revision 1.4
+#
+# Revision 1.19  2016/09/02 12:46:10  jne
+# added ctm tags
+#
+# Revision 1.18  2016/09/02 09:43:55  jne
+# added sss_operator, sss_psinv, sss_ctc, sss_expansion
+#
+# Revision 1.17  2011/05/06 08:29:05  janne
+# Checking in earlier updates.
+#
+# Revision 1.16  2010/04/21 06:19:28  janne
+# Mistake corrected: xfit -> xplotter
+#
+# Revision 1.15  2010/04/20 09:57:43  janne
+# Formatted for parser.
+#
+# Revision 1.14  2010/04/15 10:47:53  janne
+# Comment on event_bits 603.
+#
+# Revision 1.13  2010/03/19 15:37:53  janne
+# Added beamformer_instructions.
+#
+# Revision 1.12  2010/03/19 15:25:08  mjk
+# Added gantry related tags.
+#
+# Revision 1.11  2009/03/24 11:01:40  janne
+# Added time_stamp tag.
+#
+# Revision 1.10  2008/11/13 12:18:50  jne
+# added sss_nfree (278) and sss_st_length (279)
+#
+# Revision 1.9  2008/01/25 13:31:42  jne
+# replaced decimation_factor by stream_segment
+#
+# Revision 1.8  2007/11/20 07:35:55  jne
+# Syntax version 1.2
+#
+# Revision 1.7  2006/09/27 12:04:50  jne
+# Corrected some typos
+#
+# Revision 1.6  2006/08/30 10:28:45  jne
+# added definitions for decimation_factor, line_freq, hpi_coil_freq, sss_frame, sss_job, sss_origin,
+# sss_ord_in, sss_ord_out, sss_nmag, sss_components, sss_cal_chans, sss_cal_corrs,
+# sss_st_corr, sss_base_in, sss_base_out, sss_base_virt, sss_norm, decoupler_matrix
+#
+# Revision 1.5  2006/04/27 07:29:52  mjk
+# Minor cleanup.
+#
+# Revision 1.4  2005/04/15 05:50:04  mjk
+# Added mri_diffusion_param=2041
+#
+# Revision 1.3  2005/04/08 06:59:59  mjk
+# Added mri_diffusion_weight 2040 Added units to all tags.
+#
+# Revision 1.2  2005/03/04 08:52:21  mjk
+# Added volume_type, moved MSH tags elsewhere.
+#
+#======================================================================
+#
+#
+# Tag numbers #< 100 are only used during the acquisition
+# they will never appear in a fif file.
+#
+# Entries:
+#
+# Symbolic-name	   tag-number	type		unit	description
+#--------------------------------------------------------------------------------------------------------------
+
+#==============================================================================================================
+#
+# Acquisition control
+#
+#==============================================================================================================
+:id acquisition_control
+#==============================================================================================================
+new_file		1	void		-	"New file should be started."
+close_file		2	void		-	"Done, close the file being saved."
+discard_file		3	void		-	"Done, discard the file being saved."
+error_message		4	string		-	"Acquisition error notifier."
+suspend_reading		5	void		-	"Transmission stops temporarily."
+fatal_error_message	6	string		-	"Fatal acquisition error notifier."
+connection_check	7	void		-	"Dummy object for testing transmission."
+suspend_filing		8	void		-	"Stop filing data command."
+resume_filing		9	void		-	"Start filing data command."
+raw_prebase		10	int32		card	"Prebase length (in buffers) change request."
+raw_pick_list		11	int32*		-	"Channel order in data."
+echo			12	void		-	"Channel probe, response expected."
+resume_reading		13	void		-	"Suspended transmission continues."
+dacq_system_type	14	enum(dacq_system) -	"Type of the acquitition system."
+select_raw_ch		15	string		-	"Instruct rawdisp to select this channel."
+playback_mode		16	void		-	"Data are being played back from the hard disks."
+continue_file		17	string		-	"Used to inform that data is saved into a continuation file."
+jitter_max		18	float		s	"Maximum jitter in data communication blocks (seconds)"
+stream_segment		19	int32		-       "Data stream segment"
+#decimation_factor       19	float           -       "Data decimation factor"  ! Conflict?
+#<reserved>		20
+#...			...
+#<reserved>		99
+
+
+#==============================================================================================================
+#
+# Common tags
+#
+#==============================================================================================================
+:id common_tags
+#==============================================================================================================
+file_id			100	id1.1		-	"Id of the file"
+dir_pointer		101	int32		-	"Pointer to directory"
+dir			102	int32		-	"Tag directory"
+block_id		103	id1.1		-	"Id of a block"
+block_start		104	int32		enum	"Start of a composite object (block)"
+block_end		105	int32		enum	"End if composite object (block)" 
+free_list		106	int32		ord	"Pointer to fre block list."
+free_block		107	void		-	"Unused space"
+nop			108	void		-	"Reserved space"
+parent_file_id		109	id1.1		-	"Id of the file from which this was generated"
+parent_block_id		110	id1.1		-	"Id of a block from which this data is derived from"        
+block_name		111	string		-	"Name of a block"
+block_version		112	string		-	"Version number of the block format of this block"
+creator			113	string		-	"Program that created the file (string) "
+modifier		114	string		-	"Program that modified the file (string)"
+#
+# References
+#
+ref_role		115	enum(role)	-	"What is the role of this reference"
+ref_file_id		116	id1.1		-	"File id of the referenced object"
+ref_file_num		117	int32		ord	"File number of the referenced file"
+ref_file_name		118	string		-	"Name hint for the refereced file"
+#<reserved>		119	
+ref_block_id		120	id1.1		-	"Id of a referenced block"
+#<free>			122
+#...			...
+#<free>			149
+
+#==============================================================================================================
+#
+# Tags used in MEG data files
+#
+#==============================================================================================================
+:id common_data_tags
+#==============================================================================================================
+dacq_pars		150	string	        -	"Megacq saves the parameters in these"
+dacq_stim		151	string		-	"Megacq saves stimulus parameters in these"
+#<free>			152
+#...			...
+#<free>			199
+nchan			200	int32		card	"Number of channels"
+sfreq			201	float		Hz	"Sampling frequency (Hz)"
+#
+# enum?
+#
+data_pack		202	int32		ord	"How the raw data is packed"
+ch_info			203	ch_info_rec	-	"Channel descriptor"
+meas_date		204	int32		uxtime	"Measurement date (in Unix time encoding)"
+subject			205	string		-	"<obsolete>"
+description		206	string		-	"(Textual) Description of an object"
+nave			207	int32		card	"Number of averages"
+first_sample		208	int32		ord	"The first sample of an epoch"
+last_sample		209	int32		ord	"The last sample of an epoch"
+aspect_kind		210	enum(aspect)	-	"Aspect label"
+ref_event		211	int32		ord	"Reference event"
+experimenter		212	string		-	"Experimenter name"
+dig_point		213	dig_point	m	"Digitization point"
+ch_pos_vec		214	ch_pos_rec	-	"Channel positions (obsolete)"
+hpi_slopes		215	float*		T,T/m	"HPI data"
+hpi_ncoil		216	int32		card	"Number of HPI coils"
+req_event		217	int32		ord	"Required event"
+req_limit		218	float		s	"Window for required event"
+lowpass			219	float		Hz	"Analog lowpass"
+bad_chs			220	int32*		ord	"List of bad channels"
+#
+# enum?
+#
+artef_removal		221	int32		ord	"Artefact removal" 
+coord_trans		222	coor_trans_rec	-	"Coordinate transformation"
+highpass		223	float		Hz	"Analog highpass"
+ch_cals_vec		224	float*		rel	"Channel calibration (obsolete)"
+hpi_bad_chs		225	int32*		ord	"List of channels considered to be bad in hpi"
+hpi_corr_coeff		226	float*		rel	"Hpi curve fit correlations"
+event_comment		227	string		-	"Comment about the events used in averaging"
+no_samples		228	int32		card	"Number of samples in an epoch"
+first_time		229	float		s	"Time scale minimum"
+subave_size		230	int32		card	"Size of a subaverage"
+subave_first		231	int32		ord	"The first epoch # contained in the subaverage"
+#<free>			232
+name			233	string	        -	"Intended to be a short name"
+dig_string		234	dig_string      -	"String of digitized points"
+line_freq		235	float		Hz	"Basic line interference frequency" 
+hpi_coil_freq		236	float		Hz	"HPI coil excitation frequency"     
+signal_channel		237	string		-	"Signal channel name"
+#<free>			238
+#<free>			239
+
+#==============================================================================================================
+# Aliases
+#==============================================================================================================
+alias_tag(description)		comment
+alias_tag(description)		proj_item_description
+alias_tag(comment)		proj_item_comment
+
+
+#==============================================================================================================
+#
+# Tags used for head position indicator (HPI) data  
+#
+#==============================================================================================================
+:id hpi
+#==============================================================================================================
+hpi_coil_moments	240	float	        T/m	"Estimated moment vectors for the  HPI coil magnetic dipoles"
+hpi_fit_goodness	241	float	        %	"Three floats indicating the goodness of fit"
+hpi_fit_accept		242	bitmask(hpi_accept) -	"Bitmask indicating acceptance (see enum hpi_accept)"
+hpi_fit_good_limit	243	float		%	"Limit for the goodness-of-fit"
+hpi_fit_dist_limit	244	float		m	"Limit for the coil distance difference"
+hpi_coil_no		245	int32		ord	"Coil number listed by HPI measurement"
+hpi_coils_used		246	int32*		ord	"List of coils finally used when the transformation was computed"
+hpi_digitization_order	247	int32*		ord	"Which Isotrak digitization point corresponds to each of the coils energized"
+#<reserved>		248
+#<reserved>		249
+
+
+#==============================================================================================================
+#
+# Tags used for storing channel info
+#
+#==============================================================================================================
+:id channel_info
+#==============================================================================================================
+ch_scan_no		250	int32		ord	"Channel scan number. Corresponds to fiffChInfoRec.scanNo field"
+ch_logical_no		251	int32           ord	"Channel logical number. Corresponds to fiffChInfoRec.logNo field"
+ch_kind			252     enum(ch_type)	-	"Channel type. Corresponds to fiffChInfoRec.kind field"
+ch_range		253	float		rel	"Conversion from recorded number to (possibly virtual) voltage at the output"
+ch_cal			254	float		rel	"Calibration coefficient from output voltage to some real units"
+ch_pos			255     ch_pos_rec	-	"Channel position"
+ch_unit			256	enum(unit)	-	"Unit of the data"
+ch_unit_mul		257	int32		rel	"Unit multiplier exponent.
+ch_dacq_name		258	string		-	"Name of the channel in the data acquisition system. Corresponds to fiffChInfoRec.name."
+#<reserved>		259
+
+#==============================================================================================================
+#
+# Tags used for SSS parameters and data
+#
+#==============================================================================================================
+:id sss
+#==============================================================================================================
+#<reserved>		260
+#<reserved>		261
+#<reserved>		262            
+sss_frame		263	int32		-	"SSS expansion coordinate frame"	
+sss_job			264	enum(sss_job)	-	"SSS job selection"			
+sss_origin		265	float*(3)	m	"SSS expansion origin"			
+sss_ord_in		266	int32		-	"SSS inside expansion order"		
+sss_ord_out		267	int32		-	"SSS outside expansion order"		
+sss_nmag		268	int32		-	"SSS number of MEG channels"		
+sss_components		269	int32*		-	"SSS expansion component selections"	
+sss_cal_chans		270	int32[*,*]	-	"SSS calibration ch nrs and types"	
+sss_cal_corrs		271	float[*,*]	-	"SSS calibration adjustments"		
+sss_st_corr		272	float		-	"SSS ST subspace correlation"		
+sss_base_in		273	double[*,*]	-	"SSS inside basis matrix"		
+sss_base_out		274	double[*,*]	-	"SSS outside basis matrix"		
+sss_base_virt		275	double[*,*]	-	"SSS virtual basis matrix"		
+sss_norm		276	double		-	"SSS froebious norm of inside basis"	
+sss_iterate		277	int32		-	"SSS nr of iterations"	
+sss_nfree		278	int32		-	"SSS number of degrees of freedom"		
+sss_st_length		279	float		-	"SSS ST buffer length"		
+
+
+#==============================================================================================================
+#
+# Tags used for storing gantry information
+#
+#==============================================================================================================
+:id gantry
+#==============================================================================================================
+gantry_type		280	enum(gantry_type) -	"The type of the gantry"
+gantry_model		281	string		-	"The modal of the gantry"
+gantry_angle		282	int		-	"Tilt angle of the dewar in degrees"
+
+#<free>			283
+#<free>			289
+
+#==============================================================================================================
+#
+# Tags used for storing gantry information
+#
+#==============================================================================================================
+:id sss_op
+#==============================================================================================================
+sss_operator            290	double[*,*]	-	"SSS operator matrix"
+sss_psinv		291	double[*,*]	-	"SSS pseudoinverse matrix"
+sss_ctc			292	double[*,*]	-	"SSS crosstalk and cal correction"
+
+#<free>			283
+#<free>			298
+sss_expansion           299 
+
+#==============================================================================================================
+#
+# Tags used for storing meg signal data bits
+#
+#==============================================================================================================
+:id data_bits
+#==============================================================================================================
+data_buffer		300	int16|int32|float -	"Buffer containing measurement data"
+data_skip		301	int32		card	"Data skip in buffers"
+epoch			302     float[*,*]|oldpack -	"Buffer containing one epoch and channel"
+data_skip_samp		303     int32		card	"Data skip in samples"
+data_buffer2		304     databuffer2     -	"Data buffer with int32 time channel"   
+time_stamp		305     int32*(3)	-       "Measurement time stamp, first element seconds, second microseconds, and third sample number"
+#<free>			306
+#...			...
+#<free>			399
+
+
+#==============================================================================================================
+#
+# Tags used for patient information
+#
+#==============================================================================================================
+:id patient_information
+#==============================================================================================================
+subj_id			400      int32		ord	"Subject ID"
+subj_first_name		401      string		-	"First name of the subject"
+subj_middle_name	402      string		-	"Middle name of the subject"
+subj_last_name		403      string		-	"Last name of the subject"
+subj_birth_day		404      julian		-	"Birthday of the subject"
+subj_sex		405      enum(sex)	-	"Sex of the subject"
+subj_hand		406      enum(hand)	-	"Handedness of the subject"
+subj_weight		407      float		kg	"Weight of the subject"
+subj_height		408      float		m	"Height of the subject"
+subj_comment		409      string		-	"Comment about the subject"
+subj_his_id		410      string		-	"ID used in the Hospital Information System"
+#<free>			411
+#...			...
+#<free>			499
+
+#==============================================================================================================
+#
+# Tags used for project information
+#
+#==============================================================================================================
+:id projection_information
+#==============================================================================================================
+proj_id			500      int32		-	"Project ID"
+proj_name		501      string		-	"Project name"
+proj_aim		502      string		-	"Project description"
+proj_persons		503      string		-	"Persons participating in the project"
+proj_comment		504      string		-	"Comment about the project"
+#<free>			505
+#...
+#<free>			599
+
+
+#==============================================================================================================
+#
+# Tags used for storing information on events in data (event lists)
+#
+#==============================================================================================================
+:id event_list
+#==============================================================================================================
+event_channels		600	int32*		ord	"Event channel numbers"
+event_list		601	int32*(n*3)	-	"List of events, 3 integers per event: [number of samples, before, after]"
+event_channel		602	string		-	"Event channel name"
+event_bits		603	int32*(4)	-	"Event bits array describing transition, 4 integers: [from_mask, from_state, to_mask, to_state"
+#<free>			604
+#...			...
+#<free>			699
+
+
+#==============================================================================================================
+#
+# Tags used in saving SQUID characteristics etc.
+#
+#==============================================================================================================
+:id squid
+#==============================================================================================================
+#<free>			700
+squid_bias		701	int32		arb	"Bias setting of a squid"
+squid_offset		702	int32		arb	"Offset setting of a squid"
+squid_gate		703	int32		arb	"Gate setting of a squid"
+#<free>			704
+#...			...
+#<free>			799
+
+#==============================================================================================================
+#
+# Tags used in saving measured cross-talk and cross-talk correction matrices
+#
+#==============================================================================================================
+:id ctc
+#==============================================================================================================
+decoupler_matrix	800	sparse		-	"Cross-talk correction matrix"             
+ctm_open_amps		801	float[*,*]	-	"ctm open-loop amplitudes"
+ctm_open_phase		802	float[*,*]	-	"ctm open-loop phases"
+ctm_clos_amps		803	float[*,*]	-	"ctm closed-loop amplitudes"
+ctm_clos_phase		804	float[*,*]	-	"ctm closed-loop phases"
+ctm_clos_dote		805	float[*,*]	-	"ctm closed-loop dot products"
+ctm_open_dote		806	float[*,*]	-	"ctm open-loop dot products"
+ctm_exci_freq		807	float		Hz	"ctm excitation frequency"
+#<free>			808                                                                        
+#...			...									   
+#<free>			1100									   
+
+
+#==============================================================================================================
+#
+# Reference
+#
+#==============================================================================================================
+:id reference
+#==============================================================================================================
+ref_path		1101	string		-	"A referenced file name"
+
+#==============================================================================================================
+# Aliases
+#==============================================================================================================
+alias_tag(ref_path)		mri_source_path
+
+#==============================================================================================================
+#
+# This section describes the tags related to storing of structural image data in FIFF files.
+#
+#==============================================================================================================
+:id structural_image_data
+#==============================================================================================================
+#<free>			1102                                                                       
+#...			...									   
+#<free>			2000									   
+
+volume_type                   2001      enum(volume_type)	-       "Type of the volume"       
+mri_source_format             2002	enum(mri_format)	-	"File format of referenced image data"
+mri_pixel_encoding            2003	enum(pixel_encoding)    -	"Pixel type of the stored data"
+mri_pixel_data_offset         2004	int32			ord	"Offset to the pixel data in the referenced data"
+mri_pixel_scale               2005	float			rel	"Scaling factor from the disk data to unsigned char format"
+mri_pixel_data                2006	byte*			rel	"Pixel data stored in the Fiff file"
+mri_pixel_overlay_encoding    2007	enum(mri_pixel)	        -	"Pixel type of the stored overlay data"
+mri_pixel_overlay_data        2008	byte*			rel	"Overlay data stored in the Fiff file"
+mri_bounding_box              2009	float			m	"<obsolete>"
+mri_width                     2010	int32			card	"Number of voxels in x direction"
+mri_width_m                   2011	float			m	"Size of the volume in x direction"
+mri_height                    2012	int32			card	"Number of voxels in y direction"
+mri_height_m                  2013	float			m	"Size of the volume in y direction"
+mri_depth                     2014	int32			card	"Number of voxels in z direction"
+mri_depth_m                   2015	float			m	"Size of the volume in z direction"
+mri_thickness                 2016	float			m	"Slice thickness"
+mri_scene_aim                 2017	float*(3)		rel	"Direction to which the scene snapshot is taken"
+mri_calibration_scale         2018	float			rel	"Scale from disk values to real world values"
+mri_calibration_offset	      2019	float			rel	"Offset for scaling to real world values"
+mri_orig_source_path          2020	string			-	"Path to the source file, where this data is derived from."
+mri_orig_source_format        2021	enum(mri_format)	-	"Format of the source file." 
+mri_orig_pixel_encoding       2022	enum(pixel_encoding)	-	"Pixel type of the source file"
+mri_orig_pixel_data_offset    2023	int32			ord	"Offset to the pixel data in the source file"                   
+mri_time		      2024	float			s	"Time point of the current volume"
+#<free>			      2025
+#...			      ...
+#<free>			      2029
+mri_voxel_data                2030	variable		-	"Volumetric image data"
+mri_voxel_encoding            2031	enum(pixel_encoding)	-	"Encoding for voxel data"
+voxel_nchannels               2032      int32                   ord	"Number of channels in a voxel"     
+
+#<reserved> voxel_layout      2033      enum()			-	"Voxel data layout? zvoxmap? , default=planes?"
+#<reserved> voxel_	      2034	_			-	"reserved for voxel properties"  
+#<reserved> voxel_	      2035	_			-	"reserved for voxel properties"  
+#<free>			      2034
+#...
+#<free>			      2039
+#
+#
+# Diffusion tensors
+#
+# MSe: Diffuusiokuville tarvitaan täg ns. b-factorille (aka. 'diffusion weighting factor', by LeBihan).
+# Sen (käyttökelpoinen) unit on s/(mm^2) ja tyyppi siis float. Käytetty b-factor vaikuttaa tensoreihin,
+# periaatteessa  haluttu tieto on b*tensor, mutta käytännössä ne on parempi pitää irrallaan, koska sama
+# mittaus voidaan haluta toistaa eri b-arvoilla ja siten olisi siis suotavaa pystyä yksilöimään nämä mittaukset.
+
+mri_diffusion_weight          2040	float		       s/m^2    "Diffusion weigting factor a la LeBihan [s/(m^2)]"
+mri_diffusion_param	      2041	enum(diffusion_param)  -	"What diffusion parameter is mapped in the volume"
+
+#<free>			      2041
+#...			       ...
+#<free>			      2099
+#
+mri_mrilab_setup              2100	<internal>		-	"Used internally."
+#
+#<free>			      2101
+#...
+#<free>			      2199
+#
+mri_seg_region_id             2200	<internal>		-	"Used internally."
+#
+#<free>			      2201
+#...			      ...
+#<free>			      2999
+
+#==============================================================================================================
+#
+# These tags store information about the conductor model.
+#
+#==============================================================================================================
+:id conductor_models
+#==============================================================================================================
+#
+# Sphere model     (3000...)
+#
+conductor_model_kind   3000	enum(cond_model)     -		"What kind of conductor model"
+sphere_origin          3001	float*(3)            m		"Origin of sphere model"
+sphere_coord_frame     3002	enum(coord)           -		"Which coordinate frame are we using?"
+sphere_layers          3003     layer_struct*        -		"Array of layer structures"
+#<free>			      3004
+#...			      ...
+#<free>			      3099
+#
+# Surfaces for BEM (3100...)
+#
+bem_surf_id            3101   enum(bem_surf_id)	-	"surface type"
+bem_surf_name          3102   string		-	"surface name"
+bem_surf_nnode	       3103   int32		card	"Number of nodes on a surface"
+bem_surf_ntri	       3104   int32		card	"Number of triangles on a surface"
+bem_surf_nodes         3105   float*		card    "surface nodes (nnode,3)"
+bem_surf_triangles     3106   int32*		card    "surface triangles (ntri,3)"
+bem_surf_normals       3107   float*		rel     "surface node normal unit vectors (nnode,3)"
+bem_surf_curvs         3108   float*		1/m     "surface node first principal curvature unit vectors (nnode,3)"
+bem_surf_curv_values   3109   float		1/m     "the two curvature values (nnode,2)"
+bem_pot_solution       3110   float[*,*]        -       "The solution matrix"
+bem_approx             3111   enum(bem_approx)	-       "Approximation method for bem computation"
+bem_coord_frame        3112   enum(coord)	-       "The coordinate frame of the model"
+bem_sigma              3113   float		S/m     "Conductivity of a compartment"
+#<free>			      3114
+#...			      ...
+#<free>			      3199
+#
+# Source descriptions (3200...)
+#
+#<reserved>	       3200
+source_dipole          3201   float*(6)		m,Am	"Dipole definition. The dipole is six floats (position and dipole moment)"
+#<free>		       3202
+#...		       ...
+#<free>		       3299
+beamformer_instructions	3300  string            -       "Contents of the beamformer instruction file (prototype software)"
+#<free>		       3301
+#...		       ...
+#<free>		       3299
+
+#==============================================================================================================
+# Aliases
+#==============================================================================================================
+alias_tag(source_dipole)	proj_item_dipole
+
+
+#==============================================================================================================
+#
+# These tags are used by xfit
+#
+#==============================================================================================================
+:id xfit
+#==============================================================================================================
+#<reserved>			 3400
+xfit_lead_products               3401  double*	    -    "Lead field matrix data"
+xfit_map_products                3402  double[*,*]  -    "Mapping to isocontour map"
+xfit_grad_map_products           3403  double[*,*]  - 	 "Mapping to gradient map"
+xfit_vol_integration             3404  bool	    -    "Was volume integration used"
+xfit_integration_radius          3405  float	    m	 "Radius of integration sphere in MNE calculations"
+xfit_conductor_model_name        3406  string	    -	 "Name of the conductor model used"
+xfit_conductor_model_trans_name  3407  string	    -	 "Name of the model coordinate transform file"
+xfit_cont_surf_type		 3408  enum(map_surf)	 -    "Contour surface type in Xfit"      
+#<reserved>		      3409
+#<reserved>		      3410
+
+#==============================================================================================================
+#
+# These relate to linear projection (SSP)
+#
+#==============================================================================================================
+:id ssp
+#==============================================================================================================
+proj_item_kind          3411	enum(proj_item)  -	"Type of the projection defintion. *
+proj_item_time          3412	float		 s	"Time of the field sample (only for proj_item_field)"
+proj_item_ign_chs       3413	int32*           ord	"Channels ignored in the projection definition"
+proj_item_nvec          3414	int32		 card	"Number of projection vectors."
+proj_item_vectors       3415	float[*,*]	 rel	"Projection vectors"Di	
+proj_item_definition    3416	enum(proj_by)    -	"How the projection is defined (subspace or its complement)"
+proj_item_ch_name_list  3417	string		 -	"Names of the channels of the projection vectors"
+#<free>			3418
+#...			...
+#<free>			3499
+
+#==============================================================================================================
+# Aliases
+#==============================================================================================================
+alias_tag(proj_item_ch_name_list) sparse_ch_name_list
+
+#==============================================================================================================
+#
+# These tags are used by xfit
+#
+#==============================================================================================================
+:id xplotter
+#==============================================================================================================
+#<reserved>		3500    -           -	"Reserved"
+xplotter_layout         3501	string      -	"Xplotter layout tag"
+
+#==============================================================================================================
+#               3502...
+#               3799          Reserved for MNE estimates (MHä)
+#     
+# This range is reserved for MGH and Matti Hämäläinen for developing
+# MNE software.
+#
+# THIS TAG RANGE IS POTENTIALLY CONFIDENTIAL INFORMATION.
+# DO NOT PUBLISH WITHOUT PERMISSION.
+#==============================================================================================================
+#<reserved>  		3502    -
+#...
+#<reserved>		3799    -
+#==============================================================================================================
+:id mne
+#==============================================================================================================
+ch_name_list            3507	string      -	"List of channel names"
+
+
+#==============================================================================================================
+#
+#		3800...
+#		3999	    Range of free tags
+#
+#<free>  		3800    -
+#...
+#<free>			3999    -
+#
+#==============================================================================================================
+
+#==============================================================================================================
+#
+# These occur in the volume info files
+#
+#==============================================================================================================
+:id volume_info
+#==============================================================================================================
+#<free>			4000
+vol_id                  4001	?		-	"Id of a volume"
+vol_name                4002	string		-	"Name of a volume"
+vol_owner_id            4003	int32		ord	"User id of the owner"
+vol_owner_name          4004	string		-	"User name of the owner"
+vol_owner_real_name     4005	string		-	"User name of the owner"
+vol_type                4006	enum(vol_type)  -	"Volume type"
+vol_host                4007	string		-	"Where does the volume reside"
+vol_real_root           4008	string		-	"The root of the volume in in the machine where the file system is mounted"
+vol_symbolic_root       4009	string		-	"Symbolic link to the root of the volume (if any) system is mounted"
+vol_mount_point         4010	string		-	"Last mount point of the volume"
+vol_blocks              4011	int32		card	"Total # of blocks"
+vol_free_blocks         4012	int32		card	"Number of free blocks"
+vol_avail_blocks        4013	int32		card	"Number of free blocks available to non-superuser"
+vol_block_size          4014	int32		card	"Block size in bytes"
+vol_directory           4015	void		-	"Contents of the volume in a special format; the data type will be FIFF_VOID"
+#<free>                 4016
+#...			...
+#<free>                 5000
+
+
+#==============================================================================================================
+#
+# Misc
+#
+#==============================================================================================================
+:id misc
+#==============================================================================================================
+#<reserved>             5001	-	ord	"INDEX_KIND may be in use somewhere."
+#<reserved>             5002	-	ord	"INDEX may be in use somewhere."
+#
+# This is only used by cm_sender to indicate a data buffer which is not logged into the file.
+mem_data_buffer         10300   int16*  -       "Databuffer to be saved into a file"
+

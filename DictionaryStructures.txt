@@ -1,0 +1,719 @@
+# Fiff file structure dictionary
+#
+# Copyright (C) Elekta Oy
+#
+# This is the complete dictionary.
+## Copyright Elekta Oy.
+# All rights reserved.
+#
+# $Log: DictionaryStructures.txt,v $
+# Revision 1.4  2011/05/06 08:29:05  janne
+# Checking in earlier updates.
+#
+# Revision 1.3  2010/04/21 10:44:15  janne
+# Updates to make Framemaker file proper.
+#
+# Revision 1.2  2010/04/20 13:19:14  janne
+# Updated syntax definition.
+#
+# Revision 1.1  2010/04/20 11:46:34  janne
+# Initial revision
+#
+#
+#======================================================================
+
+#======================================================================
+#
+# Syntax used in defining Fiff structures
+#
+# BLOCKS
+#
+# A block is described as a C-like block inside curly brackets. The type of the block
+# is given as a variable name found in "DictionaryIOD.txt" before the starting 
+# bracket. The tags inside the block are indented once compared to the level of the 
+# block name.
+# 
+# An example:
+#
+# block {
+#	TAGS
+# }
+#
+# TAGS
+# 
+# Tags are given as variables defined in "DictionaryTags.txt". The data type of each
+# tag is omitted. See "DictionaryTags.txt" for the data type and description of each
+# tag. In general, no requirement is set for the ordering of tags inside a block.
+#
+# SEGMENT DEFINITIONS
+#
+# Below common segments are defined into separate variables in the following manner:
+#
+# SEGMENT =
+#	tag
+#	block {
+#	      tag
+#	}
+#
+# These segments can be used inside other segments:
+#
+# tag
+# SEGMENT
+# block {
+#	tag
+# }
+#
+# CONDITIONAL AND MULTIPLICATIVE STATEMENTS
+# 
+# If the tag/block appears only once, and is required, it is written as it is:
+#
+# block {
+#	tag
+# }
+#
+# If the tag/block is required to appear n times in a row, a number is used inside 
+# square brackets:
+#
+# block[n] {
+#	tag[n]
+# }
+#
+# If the tag/block has to appear at least once, but can appear any number of times,
+# use star symbol:
+#
+# block* {
+#	tag
+# }
+#
+# If the tag/block is conditional, use a question mark:
+#
+# block?{
+#	tag?
+# }
+#
+# Also multiplicative statements can be conditional. Place the question mark 
+# after the square brackets or the star symbol:
+#
+# block[n]? {
+#	tag[n]?
+# }
+#
+# block*? {
+#	tag*?
+# }
+#
+# If there are two interchangeable options for tag/block it is denoted by '|'
+# between the options:
+#
+# block1 | block2 {
+#	 tag1 | tag2
+# }
+#
+#======================================================================
+
+#======================================================================
+#
+# Common to blocks
+#
+#======================================================================
+:id common_to_blocks
+#======================================================================
+
+<begin>
+COMMON_TO_BLOCKS
+	block {
+	      block_id?
+	      parent_block_id?
+	}
+<end>
+
+#======================================================================
+#
+# Start of the file (common to all)
+#
+#======================================================================
+:id file_start
+#======================================================================
+
+<begin>
+FILE_START =
+	file_id
+	dir_pointer
+	free_list?
+	parent_file_id?
+<end>
+
+#======================================================================
+#
+# Subject information
+#
+#======================================================================
+:id subject_info
+#======================================================================
+
+<begin>
+SUBJECT_INFO =
+	subject {
+		subj_id
+		subj_his_id?
+		subj_last_name
+		subj_first_name
+		subj_middle_name?
+		subj_birth_day?
+		subj_sex?
+		subj_hand?
+		subj_weight?
+		subj_height?
+		comment?
+	}
+<end>
+
+#======================================================================
+#
+# Project information
+#
+#======================================================================
+:id project_info
+#======================================================================
+
+<begin>
+PROJECT_INFO =
+	proj_id
+	proj_name
+	comment?
+<end>
+
+#======================================================================
+#
+# Processing history
+#
+#======================================================================
+:id processing_history
+#======================================================================
+<begin>
+PROCESSING_HISTORY =
+	processing_history? {
+		PROCESSING_RECORD+
+	}
+<end>
+
+#======================================================================
+#
+# Processing history
+#
+#======================================================================
+:id processing_record
+#======================================================================
+<begin>
+PROCESSING_RECORD =
+	processing_record? {
+		meas_date
+		experimenter
+		creator?
+		PROCESSING_INFO+
+	}
+<end>
+
+#======================================================================
+#
+# SSS processing record
+#
+#======================================================================
+:id sss_record
+#======================================================================
+
+<begin>
+SSS_RECORD =
+	processing_record {
+		meas_date
+		experimenter
+		creator 
+		sss_info {
+			sss_job
+			sss_frame
+			sss_origin
+			sss_ord_in
+			sss_ord_out
+			sss_nmag
+			sss_components
+			sss_nfree
+		}
+		channel_decoupler {
+			meas_date
+			creator
+			decoupler_matrix
+			sparse_ch_name_list
+		}
+		sss_cal_adjust {
+			sss_cal_chans
+			sss_cal_corrs
+		}
+	}
+<end>
+
+#======================================================================
+#
+# MaxShield processing record
+#
+#======================================================================
+:id maxshield_record
+#======================================================================
+
+<begin>
+MAXSHIELD_RECORD =
+	processing_record {
+		meas_date
+		experimenter
+		maxshield {
+		}
+	}
+<end>
+
+
+#======================================================================
+#
+# Head position indicator (HPI) measurement and fitting results
+#
+#======================================================================
+:id hpi
+#======================================================================
+
+<begin>
+HPI =
+	hpi_result {
+		dig_point*
+		hpi_digitization_order
+		hpi_coils_used
+		hpi_coil_moments
+		hpi_fit_goodness
+		hpi_fit_good_limit
+		hpi_fit_dist_limit
+		hpi_fit_accept
+		coord_trans			# device -> head
+	}
+	hpi_meas? {
+		creator
+		sfreq
+		nchan
+		nave
+		hpi_ncoil
+		first_sample
+		last_sample
+		hpi_coil+ {
+			hpi_coil_no
+			epoch+
+			hpi_slopes
+			hpi_corr_coeff
+			hpi_coil_freq?
+		}
+	}
+	isotrak? {
+		dig_point+
+	}
+<end>
+
+#======================================================================
+#
+# Linear projection (SSP)
+#
+#======================================================================
+:id ssp
+#======================================================================
+
+<begin>
+SSP =
+	ssp {
+		nchan?
+		proj_item+ {
+			description
+			proj_item_kind
+			nchan?
+			proj_item_ch_name_list
+			proj_item_time
+			proj_item_nvec
+			proj_item_vectors
+		}
+	}
+<end>
+
+#======================================================================
+#
+# Measurement information
+#
+#======================================================================
+:id meas_info
+#======================================================================
+
+<begin>
+MEAS_INFO = 
+	meas_info {
+		experimenter
+		description?
+		meas_date
+		SUBJECT_INFO
+		PROJECT_INFO
+		HPI
+		SSP?
+		events? {
+			event_channels
+			event_list
+		}
+		dacq_pars? {
+			dacq_pars
+			dacq_stim?
+			}
+		nchan
+		sfreq
+		lowpass
+		highpass
+		data_pack?
+		line_freq?
+		gantry_angle?
+		ch_info[nchan]
+		bad_chs?
+		hpi_subsystem? {
+			hpi_ncoil
+			event_channel
+			hpi_coil+ {
+				  event_bits
+			}
+		}
+	}
+<end>
+
+
+#======================================================================
+#
+# Raw data in single file
+#
+#======================================================================
+:id raw_single
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	PROCESSING_HISTORY?
+	raw_data {
+		first_samp?
+		(data_buffer | data_skip | data_skip_samp)*
+		}
+	}
+}
+nop
+<end>
+
+#======================================================================
+#
+# File reference block used in data splitted in multiple files
+#
+#======================================================================
+:id file_reference
+#======================================================================
+
+<begin>
+FILE_REFERENCE = 
+	ref {
+	    ref_role
+	    ref_file_id
+	    ref_file_num
+	}
+<end>
+
+#======================================================================
+#
+# Raw data in multiple files
+#
+#======================================================================
+:id raw_multiple_1
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	raw_data {
+		first_samp?
+		(data_buffer | data_skip | data_skip_samp)*
+		FILE_REFERENCE
+		}
+	}
+}
+nop
+<end>
+
+#======================================================================
+:id raw_multiple_2
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	raw_data {
+		FILE_REFERENCE
+		first_samp?
+		(data_buffer | data_skip | data_skip_samp)*
+		FILE_REFERENCE
+		}
+	}
+}
+nop
+<end>
+
+#======================================================================
+:id raw_multiple_n
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	raw_data {
+		FILE_REFERENCE
+		first_samp?
+		(data_buffer | data_skip | data_skip_samp)*
+		}
+	}
+}
+nop
+<end>
+
+
+
+#======================================================================
+#
+# Raw MaxShield data
+#
+#======================================================================
+:id raw_maxshield
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	processing_history {
+		MAXSHIELD_RECORD
+	}
+	maxshield_raw_data {
+		first_samp?
+		(data_buffer | data_skip | data_skip_samp)*
+	}
+}
+nop
+<end>
+
+#======================================================================
+#
+# Processed raw data
+#
+#======================================================================
+:id processed_raw
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	PROCESSING_HISTORY
+	processed_data {
+		continuous_data {
+			first_samp?
+			(data_buffer | data_skip | 
+			data_skip_samp)*
+		}
+	}
+}
+nop
+<end>
+
+#======================================================================
+#
+# Evoked (averaged) data
+#
+#======================================================================
+:id evoked_data
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	PROCESSING_HISTORY
+	processed_data {
+		evoked+ {
+		       ref_event
+		       first_sample
+		       last_sample
+		       event_comment?
+		       comment?
+		       aspect {
+			      aspect_kind
+			      nave?
+			      epoch+
+		       }
+		}
+	}
+}
+nop
+<end>
+
+#======================================================================
+#
+# Evoked MaxShield data
+#
+#======================================================================
+:id evoked_maxshield
+#======================================================================
+
+<begin>
+FILE_START
+measurement {
+	MEAS_INFO
+	processing_history? {
+		MAXSHIELD_RECORD
+	}
+	processed_data {
+		evoked+ {
+		       ref_event
+		       first_sample
+		       last_sample
+		       event_comment?
+		       comment?
+		       maxshield_aspect {
+			      aspect_kind
+			      nave?
+			      epoch+
+		       }
+		}
+	}
+}
+nop
+<end>
+
+#======================================================================
+#
+# Pixel data is included in the FIFF file
+#
+#======================================================================
+:id pixel_data_included
+#======================================================================
+
+<begin>
+PIXEL_DATA_INCLUDED = 
+	mri_pixel_data
+	mri_pixel_type?			# Can be omitted only if mri_pixel_data's FIFF 
+					# data type matches with the actual data type
+	mri_orig_source_path?
+	mri_orig_source_format?
+<end>
+
+#
+#======================================================================
+#
+# Pixel data is referenced from an external file:
+#
+#======================================================================
+:id pixel_data_referenced
+#======================================================================
+
+<begin>
+PIXEL_DATA_REF =
+	ref_path
+	mri_source_format
+	mri_pixel_type
+	mri_pixel_data_offset
+<end>
+
+
+#======================================================================
+#
+# Structural image (mri) data
+#
+#======================================================================
+:id structural_data
+#======================================================================
+
+<begin>
+FILE_START
+structural_data {
+	SUBJECT_INFO?
+	PROCESSING_HISTORY?
+	volume_data+ {
+		coord_trans?		    # head -> MRI
+		dig_point[3]?
+		volume_slice+ {
+			mri_width
+			mri_width_m
+			mri_height
+			mri_height_m
+			coord_trans         # MRI slice ->MRI
+			PIXEL_DATA_INCLUDED | PIXEL_DATA_REF
+			mri_pixel_scale
+		}
+	}
+}
+nop
+<end>
+
+#======================================================================
+#
+# Triangular BEM meshes
+#
+#======================================================================
+:id bem
+#======================================================================
+
+<begin>
+FILE_START
+bem {
+	SUBJECT_INFO?
+	PROCESSING_HISTORY?
+	bem_coord_frame
+	coord_trans	             # head -> mri
+	bem_surf+ {
+		bem_surf_id
+		bem_sigma
+		bem_surf_nnode
+		bem_surface_ntri
+		bem_surface_nodes
+		bem_surface_normals?
+		bem_surface_triangles
+	}
+	bem_approx?
+	bem_pot_solution?
+}
+nop
+<end>
+
+#======================================================================
+#
+# Screen captures
+#
+#======================================================================
+:id scenery
+#======================================================================
+
+<begin>
+FILE_START
+scenery {
+	SUBJECT_INFO?
+	PROCESSING_HISTORY?
+	coord_trans    # head -> MRI
+	mri_scene_aim
+	scene+ {
+		mri_width
+		mri_width_m
+		mri_height
+		mri_height_m
+		coord_trans    # MRI slice -> MRI
+		block_name
+		mri_pixel_data
+		mri_source_format
+		mri_pixel_scale	
+	}
+}
+nop
+<end>
