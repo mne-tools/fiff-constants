@@ -4,7 +4,7 @@
 #
 # Copyright Elekta Oy.
 # All rights reserved.
-# 
+#
 # Syntax version 1.4
 #
 # $Revision: 1.24 $
@@ -64,8 +64,8 @@
 # Corrected some typos
 #
 # Revision 1.7  2006/08/30 10:28:45  jne
-# added definitions for 	dense_matrix, sparse_ccs_matrix, 
-# sparse_rcs_matrix, quat0...6, hpi_goodness, pi_error, hpi_movement, 
+# added definitions for 	dense_matrix, sparse_ccs_matrix,
+# sparse_rcs_matrix, quat0...6, hpi_goodness, pi_error, hpi_movement,
 # and sss_job options
 #
 # Revision 1.6  2006/04/27 07:30:07  mjk
@@ -76,10 +76,10 @@
 #
 # Revision 1.4  2005/11/03  14:30:49  14:30:49  skesti (Sami Kesti)
 # Renumbered candela
-# 
+#
 # Revision 1.3  2005/04/15  05:49:25  05:49:25  mjk (Matti Kajola)
 # Added enum(diffusion_parm).
-# 
+#
 # Revision 1.2  2005/03/04 09:43:52  mjk
 # Added volume_type (kandidate).
 #
@@ -107,7 +107,7 @@ primitive(dau_pack14)	14 "HP proprietary data packing format (16 bits)"
 primitive(dau_pack16)	16 "Data buffer packing using 16 bit signed integers"
 
 primitive(complex_float)  20 "Complex data with float encoding"
-primitive(complex_double) 21 "Complex data with double encoding" 
+primitive(complex_double) 21 "Complex data with double encoding"
 primitive(old_pack) 	  23 "Data packed with Neuromag proprietary 'old pack' scheme"
 
 primitive(ch_info_struct)	30 "Structure describing measurement channel"
@@ -126,13 +126,13 @@ alias_type(ascii) string
 # These values are ORed with the primitive type to get the derived type
 #======================================================================
 #
-# These are for matrices of any of the above 
+# These are for matrices of any of the above
 #
 
 derived_type(matrix)            0x40000000
-derived_type(dense_matrix)      0x00000000 
-derived_type(sparse_ccs_matrix) 0x00100000 
-derived_type(sparse_rcs_matrix) 0x00200000 
+derived_type(dense_matrix)      0x00000000
+derived_type(sparse_ccs_matrix) 0x00100000
+derived_type(sparse_rcs_matrix) 0x00200000
 
 
 #======================================================================
@@ -237,16 +237,16 @@ enum(ch_type) "Type of the channel"
     ecg             402              "ECG channel"
     misc            502              "Misc channel"
     resp            602	             "Respiration monitoring"
-    quat0	    700		     "Quaternion channel q0"   
-    quat1	    701		     "Quaternion channel q1"   
-    quat2	    702		     "Quaternion channel q2"   
-    quat3	    703		     "Quaternion channel q3"   
-    quat4	    704		     "Quaternion channel q4"   
-    quat5	    705		     "Quaternion channel q5"   
-    quat6	    706		     "Quaternion channel q6"   
-    hpi_goodness    707		     "HPI fit goodness"        
-    hpi_error	    708		     "HPI fit error"           
-    hpi_movement    709		     "HPI coil movement"       
+    quat0	    700		     "Quaternion channel q0"
+    quat1	    701		     "Quaternion channel q1"
+    quat2	    702		     "Quaternion channel q2"
+    quat3	    703		     "Quaternion channel q3"
+    quat4	    704		     "Quaternion channel q4"
+    quat5	    705		     "Quaternion channel q5"
+    quat6	    706		     "Quaternion channel q6"
+    hpi_goodness    707		     "HPI fit goodness"
+    hpi_error	    708		     "HPI fit error"
+    hpi_movement    709		     "HPI coil movement"
     seeg            802              "Stereo EEG channel"
     ecog            902              "Electrocorticogram channel"
     syst            900              "System state channel (for internal use)"
@@ -446,7 +446,7 @@ alias_type(xfit_proj_item) proj_item
 
 enum(proj_by)  "Method by which a projection is defined (FIFF_PROJ_ITEM_DEFINITION)"
 {
-    complement     0   "Defined by the basis of the complement space"      
+    complement     0   "Defined by the basis of the complement space"
     space          1   "Defined by the basis of the space itself"
 }
 
@@ -455,7 +455,7 @@ enum(volume_type) "Type of a 3D volume data"
 {
     unknown           0  "Not known"
     mri               1  "Normal structural MRI scan"
-    angio             2  "Enhanced Angio MRI scan" 
+    angio             2  "Enhanced Angio MRI scan"
     spectroscopy      3  "MRI spectroscopy scan"
     bold              4  "Functional MRI image"
     diffusion         5  "Diffusion tensor volume"
@@ -467,7 +467,7 @@ enum(volume_type) "Type of a 3D volume data"
 # entä nama, eivat ole enaan "strukturaalista"...
 #
     current_stat     10  "Current density statistical measure, strength, density, t_stat etc."
-    conductivity     11  "Conductivity" 
+    conductivity     11  "Conductivity"
 }
 
 
@@ -476,7 +476,7 @@ enum(mri_format) "Format of a volume data"
 {
     unknown           0   "Unknown"
     magnetom_short    1   "Magnetom short"
-    magnetom_long     2   "Magnetom long"  
+    magnetom_long     2   "Magnetom long"
     merit             3   "Merit"
     signa             4   "Signa"
     pixel_raw         5   "Raw pixels"
@@ -515,7 +515,7 @@ enum(diffusion_param)	"Diffusion parameter mapped in the volume, applicaple to d
     comp_3	7	"First three eigenvalues"
     comp_3_fa	8	"First three eigenvalues scaled with fa"
     tensor_6	9	"Tensor value"
-    other	15	"Other parameter"        
+    other	15	"Other parameter"
 }
 
 
@@ -558,8 +558,8 @@ enum(bem_surf_id) "What part does the surface represent"
 
 alias_type(seg_region_id) bem_surf_id
 
-enum(bem_approx) "The approximation used in BEM modeling"		     
-{				     
+enum(bem_approx) "The approximation used in BEM modeling"
+{
     const        1     "The constant potential approach"
     linear       2     "The linear potential approach"
 }

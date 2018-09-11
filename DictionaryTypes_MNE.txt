@@ -8,11 +8,11 @@
 # Revision 1.1  2005/03/04 09:42:35  mjk
 # Initial revision
 #
-# 
+#
 #======================================================================
 #======================================================================
 # Reserved for MNE estimates
-#     
+#
 # This range is reserved for MGH and Matti Hamalainen for developing
 # MNE software.
 #

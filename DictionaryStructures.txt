@@ -29,10 +29,10 @@
 # BLOCKS
 #
 # A block is described as a C-like block inside curly brackets. The type of the block
-# is given as a variable name found in "DictionaryIOD.txt" before the starting 
-# bracket. The tags inside the block are indented once compared to the level of the 
+# is given as a variable name found in "DictionaryIOD.txt" before the starting
+# bracket. The tags inside the block are indented once compared to the level of the
 # block name.
-# 
+#
 # An example:
 #
 # block {
@@ -40,7 +40,7 @@
 # }
 #
 # TAGS
-# 
+#
 # Tags are given as variables defined in "DictionaryTags.txt". The data type of each
 # tag is omitted. See "DictionaryTags.txt" for the data type and description of each
 # tag. In general, no requirement is set for the ordering of tags inside a block.
@@ -64,14 +64,14 @@
 # }
 #
 # CONDITIONAL AND MULTIPLICATIVE STATEMENTS
-# 
+#
 # If the tag/block appears only once, and is required, it is written as it is:
 #
 # block {
 #	tag
 # }
 #
-# If the tag/block is required to appear n times in a row, a number is used inside 
+# If the tag/block is required to appear n times in a row, a number is used inside
 # square brackets:
 #
 # block[n] {
@@ -91,7 +91,7 @@
 #	tag?
 # }
 #
-# Also multiplicative statements can be conditional. Place the question mark 
+# Also multiplicative statements can be conditional. Place the question mark
 # after the square brackets or the star symbol:
 #
 # block[n]? {
@@ -227,7 +227,7 @@ SSS_RECORD =
 	processing_record {
 		meas_date
 		experimenter
-		creator 
+		creator
 		sss_info {
 			sss_job
 			sss_frame
@@ -345,7 +345,7 @@ SSP =
 #======================================================================
 
 <begin>
-MEAS_INFO = 
+MEAS_INFO =
 	meas_info {
 		experimenter
 		description?
@@ -413,7 +413,7 @@ nop
 #======================================================================
 
 <begin>
-FILE_REFERENCE = 
+FILE_REFERENCE =
 	ref {
 	    ref_role
 	    ref_file_id
@@ -521,7 +521,7 @@ measurement {
 	processed_data {
 		continuous_data {
 			first_samp?
-			(data_buffer | data_skip | 
+			(data_buffer | data_skip |
 			data_skip_samp)*
 		}
 	}
@@ -602,9 +602,9 @@ nop
 #======================================================================
 
 <begin>
-PIXEL_DATA_INCLUDED = 
+PIXEL_DATA_INCLUDED =
 	mri_pixel_data
-	mri_pixel_type?			# Can be omitted only if mri_pixel_data's FIFF 
+	mri_pixel_type?			# Can be omitted only if mri_pixel_data's FIFF
 					# data type matches with the actual data type
 	mri_orig_source_path?
 	mri_orig_source_format?
@@ -712,7 +712,7 @@ scenery {
 		block_name
 		mri_pixel_data
 		mri_source_format
-		mri_pixel_scale	
+		mri_pixel_scale
 	}
 }
 nop
