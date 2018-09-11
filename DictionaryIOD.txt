@@ -38,7 +38,7 @@
 # Corrected some typos
 #
 # Revision 1.4  2006/08/30 10:28:45  jne
-# added definitions for smsh_raw_data, smsh_aspect, data_correction, 
+# added definitions for smsh_raw_data, smsh_aspect, data_correction,
 # channel_decoupler, sss_info, sss_cal_adjust, sss_st_info, sss_bases,
 # smartshield, processing_history, and processing_record
 #
@@ -52,7 +52,7 @@
 
 #
 # MEG/EEG
-# 
+#
 
 root			999	tagged   "Root block of a file (has not been used so far)."
 meas			100	tagged   "Measurement"
@@ -98,7 +98,7 @@ mri_seg_region		206	tagged   "Descriptions of one segmented region."
 
 alias_iod(structural_data)  mri
 alias_iod(volume_data)      mri_set
-alias_iod(volume_slice)     mri_slice   
+alias_iod(volume_slice)     mri_slice
 alias_iod(scenery)          mri_scenery
 alias_iod(scene)            mri_scene
 

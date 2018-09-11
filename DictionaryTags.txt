@@ -123,12 +123,12 @@ dir_pointer		101	int32		-	"Pointer to directory"
 dir			102	int32		-	"Tag directory"
 block_id		103	id1.1		-	"Id of a block"
 block_start		104	int32		enum	"Start of a composite object (block)"
-block_end		105	int32		enum	"End if composite object (block)" 
+block_end		105	int32		enum	"End if composite object (block)"
 free_list		106	int32		ord	"Pointer to fre block list."
 free_block		107	void		-	"Unused space"
 nop			108	void		-	"Reserved space"
 parent_file_id		109	id1.1		-	"Id of the file from which this was generated"
-parent_block_id		110	id1.1		-	"Id of a block from which this data is derived from"        
+parent_block_id		110	id1.1		-	"Id of a block from which this data is derived from"
 block_name		111	string		-	"Name of a block"
 block_version		112	string		-	"Version number of the block format of this block"
 creator			113	string		-	"Program that created the file (string) "
@@ -140,7 +140,7 @@ ref_role		115	enum(role)	-	"What is the role of this reference"
 ref_file_id		116	id1.1		-	"File id of the referenced object"
 ref_file_num		117	int32		ord	"File number of the referenced file"
 ref_file_name		118	string		-	"Name hint for the refereced file"
-#<reserved>		119	
+#<reserved>		119
 ref_block_id		120	id1.1		-	"Id of a referenced block"
 #<free>			122
 #...			...
@@ -185,7 +185,7 @@ bad_chs			220	int32*		ord	"List of bad channels"
 #
 # enum?
 #
-artef_removal		221	int32		ord	"Artefact removal" 
+artef_removal		221	int32		ord	"Artefact removal"
 coord_trans		222	coor_trans_rec	-	"Coordinate transformation"
 highpass		223	float		Hz	"Analog highpass"
 ch_cals_vec		224	float*		rel	"Channel calibration (obsolete)"
@@ -199,8 +199,8 @@ subave_first		231	int32		ord	"The first epoch # contained in the subaverage"
 #<free>			232
 name			233	string	        -	"Intended to be a short name"
 dig_string		234	dig_string      -	"String of digitized points"
-line_freq		235	float		Hz	"Basic line interference frequency" 
-hpi_coil_freq		236	float		Hz	"HPI coil excitation frequency"     
+line_freq		235	float		Hz	"Basic line interference frequency"
+hpi_coil_freq		236	float		Hz	"HPI coil excitation frequency"
 signal_channel		237	string		-	"Signal channel name"
 #<free>			238
 #<free>			239
@@ -215,7 +215,7 @@ alias_tag(comment)		proj_item_comment
 
 #==============================================================================================================
 #
-# Tags used for head position indicator (HPI) data  
+# Tags used for head position indicator (HPI) data
 #
 #==============================================================================================================
 :id hpi
@@ -259,24 +259,24 @@ ch_dacq_name		258	string		-	"Name of the channel in the data acquisition system.
 #==============================================================================================================
 #<reserved>		260
 #<reserved>		261
-#<reserved>		262            
-sss_frame		263	int32		-	"SSS expansion coordinate frame"	
-sss_job			264	enum(sss_job)	-	"SSS job selection"			
-sss_origin		265	float*(3)	m	"SSS expansion origin"			
-sss_ord_in		266	int32		-	"SSS inside expansion order"		
-sss_ord_out		267	int32		-	"SSS outside expansion order"		
-sss_nmag		268	int32		-	"SSS number of MEG channels"		
-sss_components		269	int32*		-	"SSS expansion component selections"	
-sss_cal_chans		270	int32[*,*]	-	"SSS calibration ch nrs and types"	
-sss_cal_corrs		271	float[*,*]	-	"SSS calibration adjustments"		
-sss_st_corr		272	float		-	"SSS ST subspace correlation"		
-sss_base_in		273	double[*,*]	-	"SSS inside basis matrix"		
-sss_base_out		274	double[*,*]	-	"SSS outside basis matrix"		
-sss_base_virt		275	double[*,*]	-	"SSS virtual basis matrix"		
-sss_norm		276	double		-	"SSS froebious norm of inside basis"	
-sss_iterate		277	int32		-	"SSS nr of iterations"	
-sss_nfree		278	int32		-	"SSS number of degrees of freedom"		
-sss_st_length		279	float		-	"SSS ST buffer length"		
+#<reserved>		262
+sss_frame		263	int32		-	"SSS expansion coordinate frame"
+sss_job			264	enum(sss_job)	-	"SSS job selection"
+sss_origin		265	float*(3)	m	"SSS expansion origin"
+sss_ord_in		266	int32		-	"SSS inside expansion order"
+sss_ord_out		267	int32		-	"SSS outside expansion order"
+sss_nmag		268	int32		-	"SSS number of MEG channels"
+sss_components		269	int32*		-	"SSS expansion component selections"
+sss_cal_chans		270	int32[*,*]	-	"SSS calibration ch nrs and types"
+sss_cal_corrs		271	float[*,*]	-	"SSS calibration adjustments"
+sss_st_corr		272	float		-	"SSS ST subspace correlation"
+sss_base_in		273	double[*,*]	-	"SSS inside basis matrix"
+sss_base_out		274	double[*,*]	-	"SSS outside basis matrix"
+sss_base_virt		275	double[*,*]	-	"SSS virtual basis matrix"
+sss_norm		276	double		-	"SSS froebious norm of inside basis"
+sss_iterate		277	int32		-	"SSS nr of iterations"
+sss_nfree		278	int32		-	"SSS number of degrees of freedom"
+sss_st_length		279	float		-	"SSS ST buffer length"
 
 
 #==============================================================================================================
@@ -306,7 +306,7 @@ sss_ctc			292	double[*,*]	-	"SSS crosstalk and cal correction"
 
 #<free>			283
 #<free>			298
-sss_expansion           299 
+#<reserved> sss_expansion           299
 
 #==============================================================================================================
 #
@@ -319,7 +319,7 @@ data_buffer		300	int16|int32|float -	"Buffer containing measurement data"
 data_skip		301	int32		card	"Data skip in buffers"
 epoch			302     float[*,*]|oldpack -	"Buffer containing one epoch and channel"
 data_skip_samp		303     int32		card	"Data skip in samples"
-data_buffer2		304     databuffer2     -	"Data buffer with int32 time channel"   
+data_buffer2		304     databuffer2     -	"Data buffer with int32 time channel"
 time_stamp		305     int32*(3)	-       "Measurement time stamp, first element seconds, second microseconds, and third sample number"
 #<free>			306
 #...			...
@@ -403,7 +403,7 @@ squid_gate		703	int32		arb	"Gate setting of a squid"
 #==============================================================================================================
 :id ctc
 #==============================================================================================================
-decoupler_matrix	800	sparse		-	"Cross-talk correction matrix"             
+decoupler_matrix	800	sparse		-	"Cross-talk correction matrix"
 ctm_open_amps		801	float[*,*]	-	"ctm open-loop amplitudes"
 ctm_open_phase		802	float[*,*]	-	"ctm open-loop phases"
 ctm_clos_amps		803	float[*,*]	-	"ctm closed-loop amplitudes"
@@ -411,9 +411,9 @@ ctm_clos_phase		804	float[*,*]	-	"ctm closed-loop phases"
 ctm_clos_dote		805	float[*,*]	-	"ctm closed-loop dot products"
 ctm_open_dote		806	float[*,*]	-	"ctm open-loop dot products"
 ctm_exci_freq		807	float		Hz	"ctm excitation frequency"
-#<free>			808                                                                        
-#...			...									   
-#<free>			1100									   
+#<free>			808
+#...			...
+#<free>			1100
 
 
 #==============================================================================================================
@@ -437,11 +437,11 @@ alias_tag(ref_path)		mri_source_path
 #==============================================================================================================
 :id structural_image_data
 #==============================================================================================================
-#<free>			1102                                                                       
-#...			...									   
-#<free>			2000									   
+#<free>			1102
+#...			...
+#<free>			2000
 
-volume_type                   2001      enum(volume_type)	-       "Type of the volume"       
+volume_type                   2001      enum(volume_type)	-       "Type of the volume"
 mri_source_format             2002	enum(mri_format)	-	"File format of referenced image data"
 mri_pixel_encoding            2003	enum(pixel_encoding)    -	"Pixel type of the stored data"
 mri_pixel_data_offset         2004	int32			ord	"Offset to the pixel data in the referenced data"
@@ -461,20 +461,20 @@ mri_scene_aim                 2017	float*(3)		rel	"Direction to which the scene 
 mri_calibration_scale         2018	float			rel	"Scale from disk values to real world values"
 mri_calibration_offset	      2019	float			rel	"Offset for scaling to real world values"
 mri_orig_source_path          2020	string			-	"Path to the source file, where this data is derived from."
-mri_orig_source_format        2021	enum(mri_format)	-	"Format of the source file." 
+mri_orig_source_format        2021	enum(mri_format)	-	"Format of the source file."
 mri_orig_pixel_encoding       2022	enum(pixel_encoding)	-	"Pixel type of the source file"
-mri_orig_pixel_data_offset    2023	int32			ord	"Offset to the pixel data in the source file"                   
+mri_orig_pixel_data_offset    2023	int32			ord	"Offset to the pixel data in the source file"
 mri_time		      2024	float			s	"Time point of the current volume"
 #<free>			      2025
 #...			      ...
 #<free>			      2029
 mri_voxel_data                2030	variable		-	"Volumetric image data"
 mri_voxel_encoding            2031	enum(pixel_encoding)	-	"Encoding for voxel data"
-voxel_nchannels               2032      int32                   ord	"Number of channels in a voxel"     
+voxel_nchannels               2032      int32                   ord	"Number of channels in a voxel"
 
 #<reserved> voxel_layout      2033      enum()			-	"Voxel data layout? zvoxmap? , default=planes?"
-#<reserved> voxel_	      2034	_			-	"reserved for voxel properties"  
-#<reserved> voxel_	      2035	_			-	"reserved for voxel properties"  
+#<reserved> voxel_	      2034	_			-	"reserved for voxel properties"
+#<reserved> voxel_	      2035	_			-	"reserved for voxel properties"
 #<free>			      2034
 #...
 #<free>			      2039
@@ -576,7 +576,7 @@ xfit_vol_integration             3404  bool	    -    "Was volume integration use
 xfit_integration_radius          3405  float	    m	 "Radius of integration sphere in MNE calculations"
 xfit_conductor_model_name        3406  string	    -	 "Name of the conductor model used"
 xfit_conductor_model_trans_name  3407  string	    -	 "Name of the model coordinate transform file"
-xfit_cont_surf_type		 3408  enum(map_surf)	 -    "Contour surface type in Xfit"      
+xfit_cont_surf_type		 3408  enum(map_surf)	 -    "Contour surface type in Xfit"
 #<reserved>		      3409
 #<reserved>		      3410
 
@@ -591,7 +591,7 @@ proj_item_kind          3411	enum(proj_item)  -	"Type of the projection defintio
 proj_item_time          3412	float		 s	"Time of the field sample (only for proj_item_field)"
 proj_item_ign_chs       3413	int32*           ord	"Channels ignored in the projection definition"
 proj_item_nvec          3414	int32		 card	"Number of projection vectors."
-proj_item_vectors       3415	float[*,*]	 rel	"Projection vectors"Di	
+proj_item_vectors       3415	float[*,*]	 rel	"Projection vectors"Di
 proj_item_definition    3416	enum(proj_by)    -	"How the projection is defined (subspace or its complement)"
 proj_item_ch_name_list  3417	string		 -	"Names of the channels of the projection vectors"
 #<free>			3418
@@ -616,7 +616,7 @@ xplotter_layout         3501	string      -	"Xplotter layout tag"
 #==============================================================================================================
 #               3502...
 #               3799          Reserved for MNE estimates (MHä)
-#     
+#
 # This range is reserved for MGH and Matti Hämäläinen for developing
 # MNE software.
 #
