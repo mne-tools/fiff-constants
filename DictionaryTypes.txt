@@ -97,7 +97,7 @@ primitive(float)	4  "Single-precision 4-byte floating point number (IEEE)"
 primitive(double)	5  "Double-precision 8-byte floating point number (IEEE)"
 primitive(julian)	6  "Julian date, encoded using int32_t"
 primitive(uint16)	7  "Unsigned 2-byte integer"
-primitive(uint32)	8  "Unsigned 4-byte integer
+primitive(uint32)	8  "Unsigned 4-byte integer"
 primitive(uint64)       9  "Unsigned 8-byte integer"
 primitive(string)	10 "String in ISO 8859-1 character encoding"
 primitive(int64)        11 "Signed 8-byte integer"
@@ -181,7 +181,7 @@ enum(unit) "FIFF value unit code"
     rad		7	"radian"
     sr		8	"steradian"
     cd		9	"candela"
-    mol_m3	10	"mol/m³"
+    mol_m3	10	"mol/mÂ³"
     Hz		101	"herz"
     N		102	"Newton"
     Pa		103	"pascal"
@@ -464,7 +464,7 @@ enum(volume_type) "Type of a 3D volume data"
     distance          8  "Voxel distance map"
     transform         9  "Transformation vectors"
 #
-# entä nama, eivat ole enaan "strukturaalista"...
+# entÃ¤ nama, eivat ole enaan "strukturaalista"...
 #
     current_stat     10  "Current density statistical measure, strength, density, t_stat etc."
     conductivity     11  "Conductivity"
@@ -566,5 +566,5 @@ enum(bem_approx) "The approximation used in BEM modeling"
 
 
 #======================================================================
-# Reserved for MNE estimates (MHä&MGH) In a separate file.
+# Reserved for MNE estimates (MHÃ¤&MGH) In a separate file.
 #======================================================================
