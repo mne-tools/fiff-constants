@@ -48,7 +48,7 @@ enum(mne_priors) "MNE priors"
     sulci   3   ""
 }
 
-enum(covariance_type)
+enum(covariance_type) "MNE covariance type"
 {
 	mne_unknown            0        "Undefined"
 	mne_noise              1        "Noise covariance"
@@ -70,7 +70,7 @@ enum(mne_lin_proj) "Linear projection applied"
 }
 
 
-enum (mne_map) "MNE output map type"
+enum(mne_map) "MNE output map type"
 {
 	unknown                      -1    "Unspecified"
 	scalar_current               1     "Scalar current value"
@@ -86,7 +86,7 @@ enum (mne_map) "MNE output map type"
 	vector_current_noise        11     "Current noise approximation (vector)"
 }
 
-enum (mne_surf) "MNE surface type"
+enum(mne_surf) "MNE surface type"
 {
 	unknown                 -1     "Unspecified"
 	mne_surf_left_hemi	    101    ""
@@ -94,7 +94,7 @@ enum (mne_surf) "MNE surface type"
 	mne_surf_meg_helmet	    201    ""
 }
 
-enum (mne_space) "MNE source space type"
+enum(mne_space) "MNE source space type"
 {
     unknown                     -1
     mne_space_surface           1
@@ -102,7 +102,7 @@ enum (mne_space) "MNE source space type"
     mne_space_discrete          3
 }
 
-enum (mne_cov_ch) "Covariance matrix channel classification"
+enum(mne_cov_ch) "Covariance matrix channel classification"
 {
     unknown         = -1   "No idea"
     mne_meg_mag     =  0   "Axial gradiometer or magnetometer [T]"
