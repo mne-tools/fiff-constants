@@ -104,8 +104,8 @@ enum(mne_space) "MNE source space type"
 
 enum(mne_cov_ch) "Covariance matrix channel classification"
 {
-    unknown         = -1   "No idea"
-    mne_meg_mag     =  0   "Axial gradiometer or magnetometer [T]"
-    mne_meg_grad    =  1   "Planar gradiometer [T/m]"
-    mne_eeg         =  2   "EEG [V]"
+    unknown          -1   "No idea"
+    mne_meg_mag       0   "Axial gradiometer or magnetometer [T]"
+    mne_meg_grad      1   "Planar gradiometer [T/m]"
+    mne_eeg           2   "EEG [V]"
 }
