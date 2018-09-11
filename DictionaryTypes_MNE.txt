@@ -96,10 +96,10 @@ enum(mne_surf) "MNE surface type"
 
 enum(mne_space) "MNE source space type"
 {
-    unknown                     -1
-    mne_space_surface           1
-    mne_space_volume            2
-    mne_space_discrete          3
+    unknown                     -1  "Unknown"
+    mne_space_surface           1   "Surface source space"
+    mne_space_volume            2   "Volume source space"
+    mne_space_discrete          3   "Discrete source space"
 }
 
 enum(mne_cov_ch) "Covariance matrix channel classification"
