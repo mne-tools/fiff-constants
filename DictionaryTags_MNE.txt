@@ -13,7 +13,7 @@
 #======================================================================
 #               3500...
 #               3999          Reserved for MNE estimates
-#     
+#
 # This range is reserved for MGH and Matti Hamalainen for developing
 # MNE software.
 #
@@ -89,10 +89,10 @@ mne_inverse_leads        3540 ?  "The eigenleads"
 mne_inverse_fields       3541 ?  "The eigenfields"
 mne_inverse_sing         3542 ?  "The singular values"
 mne_priors_used          3543 enum(mne_priors)  "Which kind of priors have been used for the source covariance matrix"
-mne_inverse_full         3544 ?  "Inverse operator as one matrix 
-                                                      * This matrix includes the whitening operator as well 
+mne_inverse_full         3544 ?  "Inverse operator as one matrix
+                                                      * This matrix includes the whitening operator as well
                                                       * The regularization is applied"
-mne_inverse_source_orientations  3545 enum(mne_ori)  "Contains the orientation of one source per row 
+mne_inverse_source_orientations  3545 enum(mne_ori)  "Contains the orientation of one source per row
                                                       * The source orientations must be expressed in the coordinate system
                                                       * given by FIFF_MNE_COORD_FRAME"
 mne_inverse_leads_weighted       3546 ? "The eigenleads (already weighted with R^0.5)"
@@ -164,8 +164,10 @@ mne_ica_pca_mean            3606 ? "PCA mean"
 mne_ica_matrix              3607 ? "ICA unmixing matrix"
 mne_ica_bads                3608 ? "ICA bad sources"
 mne_ica_misc_params         3609 ? "ICA misc params"
+
 mne_surface_map_data        3610 ? "Surface map data"
 mne_surface_map_kind        3611 ? "Type of map"
+mne_kit_system_id           3612 ? "KIT system ID"
 
 #
 # 3700... MNE RealTime
