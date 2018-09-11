@@ -321,7 +321,7 @@ enum(dacq_system) "Describes the data acquisition system type"
     triux	  4	"Elekta Neuromag TRIUX"
 }
 
-enum(gantry_type)
+enum(gantry_type) "Describes the system gantry type"
 {
     fixed	0   "Fixed gantry"
     uni_axial	1   "Uni-axial, rotation axis parallel to device y-axis"
