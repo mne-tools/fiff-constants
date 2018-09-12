@@ -201,6 +201,8 @@ enum(unit) "FIFF value unit code"
     lx		116	"lux"
     T_m		201	"T/m"
     Am		202	"Am"
+    Am_m2		203 "Am/m^2"
+    Am_m3		204 "Am/m^3"
 }
 
 enum(unitm) "FIFF value multipliers"
@@ -296,6 +298,13 @@ enum(coil) "Sensor coil type"
     kit_ref_mag	       6002  "KIT reference magnetometer"
     baby_grad	       7001  "Baby-SQUID gradiometer"
     baby_mag	       7002  "Baby-SQUID magnetometer"
+    baby_ref_mag       7003  "Baby-SQUID reference magnetometer"
+    baby_ref_mag2      7003  "Baby-SQUID reference magnetometer 2"
+    artemis123_grad    7501  "Artemis123 gradiometer"
+    artemis123_ref_mag 7502  "Artemis123 reference magnetometer"
+    artemis123_ref_grad 7503  "Artemis123 reference gradiometer"
+    kriss_grad         8001  "KRISS gradiometer"
+    sample_tms_planar  9001  "Sample TMS sensor"
 }
 
 
@@ -303,6 +312,13 @@ enum(role) "Values for 'ref_role'; the role of a reference"
 {
     prev_file	1   "Previous file"
     next_file	2   "Next file"
+}
+
+
+enum(next) "File pointers"
+{
+    none	-1   "None"
+    seq	1   "Sequence"
 }
 
 
@@ -366,7 +382,7 @@ enum(coord) "Coordinate type"
     dicom_device     8      "Coordinate system of the imaging device, DICOM convention"
     imaging_device   9      "Coord. system of the structural imaging device"
     voxel_data       10     "Coord. system of multidimensional voxel values"
-    atlas_head	     11     "Head coordinates of the atlas std head"
+    atlas_head       11     "Head coordinates of the atlas std head"
     torso            100    "Torso coordinates"
 }
 
