@@ -182,7 +182,7 @@ enum(unit) "FIFF value unit code"
     rad		7	"radian"
     sr		8	"steradian"
     cd		9	"candela"
-    mol_m3	10	"mol/m³"
+    mol_m3	10	"mol/mÂ³"
     Hz		101	"herz"
     N		102	"Newton"
     Pa		103	"pascal"
@@ -297,9 +297,9 @@ enum(coil) "Sensor coil type"
     kit_grad	       6001  "KIT gradiometer"
     kit_ref_mag	       6002  "KIT reference magnetometer"
     baby_grad	       7001  "Baby-SQUID gradiometer"
-    baby_mag	       7002  "Baby-SQUID magnetometer"
-    baby_ref_mag       7003  "Baby-SQUID reference magnetometer"
-    baby_ref_mag2      7003  "Baby-SQUID reference magnetometer 2"
+    baby_mag_inner     7002  "BabyMEG inner layer magnetometer"
+    baby_mag_outer	   7003  "BabyMEG outer layer magnetometer"
+    baby_mag_ref	   7004  "BabyMEG reference layer magnetometer"
     artemis123_grad    7501  "Artemis123 gradiometer"
     artemis123_ref_mag 7502  "Artemis123 reference magnetometer"
     artemis123_ref_grad 7503  "Artemis123 reference gradiometer"
@@ -481,7 +481,7 @@ enum(volume_type) "Type of a 3D volume data"
     distance          8  "Voxel distance map"
     transform         9  "Transformation vectors"
 #
-# etnä nama, eivat ole enaan "strukturaalista"...
+# etnÃ¤ nama, eivat ole enaan "strukturaalista"...
 #
     current_stat     10  "Current density statistical measure, strength, density, t_stat etc."
     conductivity     11  "Conductivity"
@@ -583,5 +583,5 @@ enum(bem_approx) "The approximation used in BEM modeling"
 
 
 #======================================================================
-# Reserved for MNE estimates (MHä&MGH) In a separate file.
+# Reserved for MNE estimates (MHÃ¤&MGH) In a separate file.
 #======================================================================
