@@ -201,8 +201,8 @@ enum(unit) "FIFF value unit code"
     lx		116	"lux"
     T_m		201	"T/m"
     Am		202	"Am"
-    Am_m2		203 "Am/m^2"
-    Am_m3		204 "Am/m^3"
+    Am_m2		203 "Am/m²"
+    Am_m3		204 "Am/m³"
 }
 
 enum(unitm) "FIFF value multipliers"
@@ -481,7 +481,7 @@ enum(volume_type) "Type of a 3D volume data"
     distance          8  "Voxel distance map"
     transform         9  "Transformation vectors"
 #
-# etnä nama, eivat ole enaan "strukturaalista"...
+# entä nama, eivat ole enaan "strukturaalista"...
 #
     current_stat     10  "Current density statistical measure, strength, density, t_stat etc."
     conductivity     11  "Conductivity"
