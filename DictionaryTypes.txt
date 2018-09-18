@@ -318,7 +318,7 @@ enum(role) "Values for 'ref_role'; the role of a reference"
 enum(next) "File pointers"
 {
     none	-1   "None"
-    seq	1   "Sequence"
+    seq	0   "Sequence"
 }
 
 
