@@ -109,16 +109,3 @@ enum(mne_cov_ch) "Covariance matrix channel classification"
     mne_meg_grad      1   "Planar gradiometer [T/m]"
     mne_eeg           2   "EEG [V]"
 }
-
-enum(mne_coord) "Additional coordinate type"
-{
-    tufts_eeg         300 "Tufts EEG"
-    ctf_device       1001 "CTF device"
-    ctf_head         1004 "CTF head"
-    mri_voxel        2001 "MRI voxel"
-    ras              2002 "Surface RAS with non-zero origin"
-    mni_tal          2003 "MNI Talairach"
-    fs_tal_gtz       2004 "FreeSurfer Talairach (MNI z > 0)"
-    fs_tal_ltz       2005 "FreeSurfer Talairach (MNI z < 0)"
-    fs_tal           2006 "FreeSurfer Talairach"
-}
