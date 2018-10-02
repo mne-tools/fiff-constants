@@ -182,7 +182,7 @@ enum(unit) "FIFF value unit code"
     rad		7	"radian"
     sr		8	"steradian"
     cd		9	"candela"
-    mol_m3	10	"mol/m³"
+    mol_m3	10	"mol/m^3"
     Hz		101	"herz"
     N		102	"Newton"
     Pa		103	"pascal"
@@ -201,8 +201,8 @@ enum(unit) "FIFF value unit code"
     lx		116	"lux"
     T_m		201	"T/m"
     Am		202	"Am"
-    Am_m2		203 "Am/m²"
-    Am_m3		204 "Am/m³"
+    Am_m2		203 "Am/m^2"
+    Am_m3		204 "Am/m^3"
 }
 
 enum(unitm) "FIFF value multipliers"
@@ -489,9 +489,6 @@ enum(volume_type) "Type of a 3D volume data"
     segment_mask      7  "Segmentation mask"
     distance          8  "Voxel distance map"
     transform         9  "Transformation vectors"
-#
-# entä nama, eivat ole enaan "strukturaalista"...
-#
     current_stat     10  "Current density statistical measure, strength, density, t_stat etc."
     conductivity     11  "Conductivity"
 }
@@ -592,5 +589,5 @@ enum(bem_approx) "The approximation used in BEM modeling"
 
 
 #======================================================================
-# Reserved for MNE estimates (MHä&MGH) In a separate file.
+# Reserved for MNE estimates (MH�&MGH) In a separate file.
 #======================================================================
