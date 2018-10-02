@@ -1,4 +1,3 @@
-# -*- coding: latin-1 -*-
 # Fiff tag dictionary (types)
 #
 # This is the complete type dictionary for fiff.
@@ -589,5 +588,6 @@ enum(bem_approx) "The approximation used in BEM modeling"
 
 
 #======================================================================
-# Reserved for MNE estimates (MH�&MGH) In a separate file.
+# Reserved for MNE estimates (MHä&MGH) In a separate file.
 #======================================================================
+☺
