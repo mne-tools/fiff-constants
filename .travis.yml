@@ -1,0 +1,6 @@
+language: c
+dist: trusty
+sudo: false
+
+script:
+    - (! grep --color='auto' -P -n '[\x80-\xFF]' *.txt)
