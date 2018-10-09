@@ -304,6 +304,8 @@ enum(coil) "Sensor coil type"
     artemis123_ref_grad 7503  "Artemis123 reference gradiometer"
     sample_tms_planar   8001  "Sample TMS sensor"
     kriss_grad          9001  "KRISS gradiometer"
+    compumedics_adult_grad      10001  "Compumedics adult gradiometer"
+    compumedics_pediatric_grad  10002  "Compumedics pediatric gradiometer"
 }
 
 
