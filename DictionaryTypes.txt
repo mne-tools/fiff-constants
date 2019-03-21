@@ -408,6 +408,7 @@ enum(cardinal_point) "Cardinal point types for brain data"
     lpa     1   "Left pre-auricular"
     nasion  2   "Nasion"
     rpa     3   "Right pre-auricular"
+    inion   4   "Inion"
 }
 
 enum(cardinal_point_cardiac) "Cardinal point types for brain data"
