@@ -302,8 +302,8 @@ enum(coil) "Sensor coil type"
     artemis123_ref_grad 7503  "Artemis123 reference gradiometer"
     quspin_zfopm_mag    8001  "QuSpin ZFOPM magnetometer"
     kriss_grad          9001  "KRISS gradiometer"
-    compumedics_adult_grad      10001  "Compumedics adult gradiometer"
-    compumedics_pediatric_grad  10002  "Compumedics pediatric gradiometer"
+    compumedics_adult_grad      9101  "Compumedics adult gradiometer"
+    compumedics_pediatric_grad  9102  "Compumedics pediatric gradiometer"
 }
 
 
