@@ -2,14 +2,26 @@
 #
 # This is the complete dictionary.
 #
-# Copyright (C) Elekta Oy.
+# Copyright (C) Megin Oy.
 # All rights reserved.
 #
 # Structured objects (blocks)
 # Syntax version 1.4
 #
-# $Revision: 1.13 $
+# $Revision: 1.16 $
 # $Log: DictionaryIOD.txt,v $
+# Revision 1.16  2019/09/16 06:37:30  jne
+# maxshield_raw_data -> ias_raw_data
+# maxshield_aspect -> ias_aspect
+# smartshield -> ias
+# removed alias_iod(maxshield)	smartshield
+#
+# Revision 1.15  2019/08/13 05:51:06  skesti
+# Added channel_info.
+#
+# Revision 1.14  2019/05/14 07:17:55  skesti
+# Added device_info and helium_info.
+#
 # Revision 1.13  2018/07/02 05:19:30  jne
 # Packing revision 1.4
 #
@@ -73,15 +85,19 @@ events			115	tagged   "Information about the events detected on the trigger chan
 index			116	tagged   "An index of file id/file name pairs."
 dacq_pars		117	tagged   "The acquisition setup parameters."
 ref			118	tagged   "Reference mechanism."
-maxshield_raw_data	119     tagged   "Raw data collected with MaxShield system."
-maxshield_aspect	120     tagged   "Evoked data collected with MaxShield system."
+ias_raw_data		119     tagged   "Raw data collected with Internal Active Shielding."
+ias_aspect		120     tagged   "Evoked data collected with Internal Active Shielding."
 hpi_subsystem		121	tagged	 "Data about HPI subsystem structure and coding of related data bits."
 phantom_subsystem	122	tagged	 "Data about phantom subsystem structure and coding of related data bits."
 status_subsystem	123	tagged	 "Data about system status items and coding of related data bits."
 
+device_info		124	tagged   "Device information."
+helium_info		125	tagged   "Helium information."
+channel_info		126	tagged   "Channel information."
+
 alias_iod(evoked)		mcg_ave
-alias_iod(maxshield_raw_data)	smsh_raw_data
-alias_iod(maxshield_aspect)	smsh_aspect
+alias_iod(ias_raw_data)		smsh_raw_data
+alias_iod(ias_aspect)		smsh_aspect
 
 
 #
@@ -119,7 +135,7 @@ alias_iod(ssp_item)	xfit_proj_item
 
 #======================================================================
 #			350...
-#			390          Reserved for MNE estimates (MHä)
+#			390          Reserved for MNE estimates (MHa)
 #======================================================================
 
 fiff_cov                355     tagged    "Covariance matrices"
@@ -140,9 +156,7 @@ sss_bases		505	tagged	"SSS basis matrices."
 sss_operator            506     tagged  "SSS operator matrices."
 ct_meas                 507     tagged  "Cross-talk measurement."
 sss_expansion           508     tagged  "SSS expansion info."
-smartshield		510	tagged	"IAS information."
+ias			510	tagged	"IAS information."
 
 processing_history	900	tagged	"Processing history. Can contain multiple processing_record's"
 processing_record	901	tagged	"One processing record."
-
-alias_iod(maxshield)	smartshield
