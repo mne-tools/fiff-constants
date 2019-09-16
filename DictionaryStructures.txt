@@ -1,12 +1,29 @@
 # Fiff file structure dictionary
 #
-# Copyright (C) Elekta Oy
+# Copyright (C) Megin Oy
 #
 # This is the complete dictionary.
-## Copyright Elekta Oy.
 # All rights reserved.
 #
 # $Log: DictionaryStructures.txt,v $
+# Revision 1.8  2019/09/16 06:44:11  jne
+# maxshield_record -> ias_record
+# MAXSHIELD_RECORD -> IAS_RECORD
+# maxshield -> ias
+# raw_maxshield -> raw_ias
+# maxshield_raw_data -> ias_raw_data
+# evoked_maxshield -> evoked_ias
+# maxshield_aspect -> ias_aspect
+#
+# Revision 1.7  2019/05/20 09:24:36  skesti
+# Fixed ISOTRAK (extra '?'), raw_single and raw_multiple_1/2/n (extra '}')
+#
+# Revision 1.6  2019/05/14 07:33:23  skesti
+# Added orig_file_guid, DEVICE_INFO, HELIUM_INFO, utc_offset.
+#
+# Revision 1.5  2018/07/02 05:27:10  jne
+# Revision 1.4
+#
 # Revision 1.4  2011/05/06 08:29:05  janne
 # Checking in earlier updates.
 #
@@ -164,7 +181,7 @@ SUBJECT_INFO =
 		subj_hand?
 		subj_weight?
 		subj_height?
-		comment?
+		subj_comment?
 	}
 <end>
 
@@ -180,7 +197,7 @@ SUBJECT_INFO =
 PROJECT_INFO =
 	proj_id
 	proj_name
-	comment?
+	proj_comment?
 <end>
 
 #======================================================================
@@ -253,18 +270,18 @@ SSS_RECORD =
 
 #======================================================================
 #
-# MaxShield processing record
+# IAS processing record
 #
 #======================================================================
-:id maxshield_record
+:id ias_record
 #======================================================================
 
 <begin>
-MAXSHIELD_RECORD =
+IAS_RECORD =
 	processing_record {
 		meas_date
 		experimenter
-		maxshield {
+		ias {
 		}
 	}
 <end>
@@ -272,14 +289,14 @@ MAXSHIELD_RECORD =
 
 #======================================================================
 #
-# Head position indicator (HPI) measurement and fitting results
+# Head position indicator (HPI) fitting results
 #
 #======================================================================
-:id hpi
+:id hpi_result
 #======================================================================
 
 <begin>
-HPI =
+HPI_RESULT =
 	hpi_result {
 		dig_point*
 		hpi_digitization_order
@@ -291,7 +308,19 @@ HPI =
 		hpi_fit_accept
 		coord_trans			# device -> head
 	}
-	hpi_meas? {
+<end>
+
+#======================================================================
+#
+# Head position indicator (HPI) measurement
+#
+#======================================================================
+:id hpi_meas
+#======================================================================
+
+<begin>
+HPI_MEAS =
+	hpi_meas {
 		creator
 		sfreq
 		nchan
@@ -307,8 +336,22 @@ HPI =
 			hpi_coil_freq?
 		}
 	}
-	isotrak? {
+<end>
+
+#======================================================================
+#
+# Isotrak digitized points and strings
+#
+#======================================================================
+:id isotrak
+#======================================================================
+
+<begin>
+ISOTRAK =
+	isotrak {
+		meas_date?
 		dig_point+
+		dig_string*
 	}
 <end>
 
@@ -338,6 +381,42 @@ SSP =
 
 #======================================================================
 #
+# Device information
+#
+#======================================================================
+:id device_info
+#======================================================================
+
+<begin>
+DEVICE_INFO =
+	device_info {
+		device_type
+		device_model?
+		device_serial?
+		device_site?
+	}
+<end>
+
+#======================================================================
+#
+# Helium information
+#
+#======================================================================
+:id helium_info
+#======================================================================
+
+<begin>
+HELIUM_INFO =
+	helium_info {
+		he_level_raw?
+		helium_level?
+		gantry_angle?
+		meas_date
+	}
+<end>
+
+#======================================================================
+#
 # Measurement information
 #
 #======================================================================
@@ -347,27 +426,33 @@ SSP =
 <begin>
 MEAS_INFO =
 	meas_info {
-		experimenter
+		experimenter?
 		description?
-		meas_date
-		SUBJECT_INFO
-		PROJECT_INFO
-		HPI
-		SSP?
+		orig_file_guid?
 		events? {
 			event_channels
 			event_list
 		}
+		HPI_RESULT?
+		HPI_MEAS?
+		ISOTRAK?
 		dacq_pars? {
 			dacq_pars
 			dacq_stim?
-			}
+		}
+		SUBJECT_INFO?
+		PROJECT_INFO?
+		SSP?
+		DEVICE_INFO?
+		HELIUM_INFO?
+		meas_date
+		utc_offset?
 		nchan
 		sfreq
 		lowpass
 		highpass
-		data_pack?
 		line_freq?
+		data_pack?
 		gantry_angle?
 		ch_info[nchan]
 		bad_chs?
@@ -398,7 +483,6 @@ measurement {
 	raw_data {
 		first_samp?
 		(data_buffer | data_skip | data_skip_samp)*
-		}
 	}
 }
 nop
@@ -437,7 +521,6 @@ measurement {
 		first_samp?
 		(data_buffer | data_skip | data_skip_samp)*
 		FILE_REFERENCE
-		}
 	}
 }
 nop
@@ -456,7 +539,6 @@ measurement {
 		first_samp?
 		(data_buffer | data_skip | data_skip_samp)*
 		FILE_REFERENCE
-		}
 	}
 }
 nop
@@ -474,7 +556,6 @@ measurement {
 		FILE_REFERENCE
 		first_samp?
 		(data_buffer | data_skip | data_skip_samp)*
-		}
 	}
 }
 nop
@@ -484,10 +565,10 @@ nop
 
 #======================================================================
 #
-# Raw MaxShield data
+# Raw IAS data
 #
 #======================================================================
-:id raw_maxshield
+:id raw_ias
 #======================================================================
 
 <begin>
@@ -495,9 +576,9 @@ FILE_START
 measurement {
 	MEAS_INFO
 	processing_history {
-		MAXSHIELD_RECORD
+		IAS_RECORD
 	}
-	maxshield_raw_data {
+	ias_raw_data {
 		first_samp?
 		(data_buffer | data_skip | data_skip_samp)*
 	}
@@ -562,10 +643,10 @@ nop
 
 #======================================================================
 #
-# Evoked MaxShield data
+# Evoked IAS data
 #
 #======================================================================
-:id evoked_maxshield
+:id evoked_ias
 #======================================================================
 
 <begin>
@@ -573,7 +654,7 @@ FILE_START
 measurement {
 	MEAS_INFO
 	processing_history? {
-		MAXSHIELD_RECORD
+		IAS_RECORD
 	}
 	processed_data {
 		evoked+ {
@@ -582,7 +663,7 @@ measurement {
 		       last_sample
 		       event_comment?
 		       comment?
-		       maxshield_aspect {
+		       ias_aspect {
 			      aspect_kind
 			      nave?
 			      epoch+

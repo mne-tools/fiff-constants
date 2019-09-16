@@ -2,13 +2,25 @@
 #
 # This is the complete dictionary.
 #
-# Copyright (C) Elekta Oy.
+# Copyright (C) Megin Oy.
 # All rights reserved.
 #
 # Syntax version 1.4
 #
-# $Revision: 1.20 $
+# $Revision: 1.24 $
 # $Log: DictionaryTags.txt,v $
+# Revision 1.24  2019/09/16 09:11:43  jne
+# Changed Elekta -> Megin
+#
+# Revision 1.23  2019/05/20 09:27:14  skesti
+# Commented sss_expansion out (prefixed with #<reserved>).
+#
+# Revision 1.22  2019/05/14 11:33:20  skesti
+# Added description for sss_expansion.
+#
+# Revision 1.21  2019/05/14 07:37:37  skesti
+# Added device_type/model/serial/site, he_level_raw, helium_level, orig_file_guid, utc_offset.
+#
 # Revision 1.20  2018/07/02 05:19:30  jne
 # Packing revision 1.4
 #
@@ -155,7 +167,17 @@ ref_block_id		120	id1.1		-	"Id of a referenced block"
 #==============================================================================================================
 dacq_pars		150	string	        -	"Megacq saves the parameters in these"
 dacq_stim		151	string		-	"Megacq saves stimulus parameters in these"
-#<free>			152
+
+device_type		152	string		-	"Device type from NM_DEVICE"
+device_model		153	string		-	"Device model from NM_DEVICE_MODEL"
+device_serial		154	string		-	"Device serial from NM_SERIAL_NUMBER"
+device_site		155	string		-	"Device site from NM_SITE"
+he_level_raw		156	float		-	"Helium level % before position correction"
+helium_level		157	float		-	"Helium level % after position correction"
+orig_file_guid		158	string		-	"Original file GUID"
+utc_offset		159	string		-	"UTC offset of related meas_date (sHH:MM)"
+
+#<free>			160
 #...			...
 #<free>			199
 nchan			200	int32		card	"Number of channels"
@@ -295,7 +317,7 @@ gantry_angle		282	int		-	"Tilt angle of the dewar in degrees"
 
 #==============================================================================================================
 #
-# Tags used for storing gantry information
+# Tags used for storing sss information
 #
 #==============================================================================================================
 :id sss_op
@@ -304,7 +326,7 @@ sss_operator            290	double[*,*]	-	"SSS operator matrix"
 sss_psinv		291	double[*,*]	-	"SSS pseudoinverse matrix"
 sss_ctc			292	double[*,*]	-	"SSS crosstalk and cal correction"
 
-#<free>			283
+#<free>			293
 #<free>			298
 #<reserved> sss_expansion           299
 
@@ -482,10 +504,10 @@ voxel_nchannels               2032      int32                   ord	"Number of c
 #
 # Diffusion tensors
 #
-# MSe: Diffuusiokuville tarvitaan täg ns. b-factorille (aka. 'diffusion weighting factor', by LeBihan).
-# Sen (käyttökelpoinen) unit on s/(mm^2) ja tyyppi siis float. Käytetty b-factor vaikuttaa tensoreihin,
-# periaatteessa  haluttu tieto on b*tensor, mutta käytännössä ne on parempi pitää irrallaan, koska sama
-# mittaus voidaan haluta toistaa eri b-arvoilla ja siten olisi siis suotavaa pystyä yksilöimään nämä mittaukset.
+# MSe: Diffuusiokuville tarvitaan tag ns. b-factorille (aka. 'diffusion weighting factor', by LeBihan).
+# Sen (kayttokelpoinen) unit on s/(mm^2) ja tyyppi siis float. Kaytetty b-factor vaikuttaa tensoreihin,
+# periaatteessa  haluttu tieto on b*tensor, mutta kaytannossa ne on parempi pitaa irrallaan, koska sama
+# mittaus voidaan haluta toistaa eri b-arvoilla ja siten olisi siis suotavaa pystya yksiloimaan nama mittaukset.
 
 mri_diffusion_weight          2040	float		       s/m^2    "Diffusion weigting factor a la LeBihan [s/(m^2)]"
 mri_diffusion_param	      2041	enum(diffusion_param)  -	"What diffusion parameter is mapped in the volume"
@@ -615,9 +637,9 @@ xplotter_layout         3501	string      -	"Xplotter layout tag"
 
 #==============================================================================================================
 #               3502...
-#               3799          Reserved for MNE estimates (MHä)
+#               3799          Reserved for MNE estimates (MHa)
 #
-# This range is reserved for MGH and Matti Hämäläinen for developing
+# This range is reserved for MGH and Matti Hamalainen for developing
 # MNE software.
 #
 # THIS TAG RANGE IS POTENTIALLY CONFIDENTIAL INFORMATION.
@@ -683,4 +705,3 @@ vol_directory           4015	void		-	"Contents of the volume in a special format
 #
 # This is only used by cm_sender to indicate a data buffer which is not logged into the file.
 mem_data_buffer         10300   int16*  -       "Databuffer to be saved into a file"
-
