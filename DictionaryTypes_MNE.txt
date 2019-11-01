@@ -109,3 +109,10 @@ enum(mne_cov_ch) "Covariance matrix channel classification"
     mne_meg_grad      1   "Planar gradiometer [T/m]"
     mne_eeg           2   "EEG [V]"
 }
+
+enum(mne_custom_ref) "Custom EEG reference types"
+{
+    off               0   "No custom reference"
+    on                1   "Some channels have a custom reference"
+    csd               2   "CSD has been applied"
+}
