@@ -452,8 +452,10 @@ enum(sex) "Sex of a subject/patient"
 
 enum(hand) "Handedness of a subject/patient"
 {
+    n/a   0  "not available"
     right 1  "Righthanded"
     left  2  "Lefthanded"
+    ambi  3  "Ambidextrous"
 }
 
 
