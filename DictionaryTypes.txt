@@ -454,6 +454,7 @@ enum(hand) "Handedness of a subject/patient"
 {
     right 1  "Righthanded"
     left  2  "Lefthanded"
+    ambi  3  "Ambidextrous"
 }
 
 
