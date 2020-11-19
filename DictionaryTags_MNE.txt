@@ -38,6 +38,7 @@ mne_coord_frame         3506    enum(?)   "Coordinate frame employed. Defaults:
                                                       * FIFFB_MNE_INVERSE_SOLUTION   FIFF_COORD_HEAD"
 mne_ch_name_list        3507   string
 mne_file_name           3508   string     ""    /* This removes the collision with fiff_file.h  (used to be 3501) */
+mne_ch_name_mapping     3509   string
 
 #
 # 3510... Source space
