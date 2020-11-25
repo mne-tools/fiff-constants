@@ -270,7 +270,7 @@ ch_pos			255     ch_pos_rec	-	"Channel position"
 ch_unit			256	enum(unit)	-	"Unit of the data"
 ch_unit_mul		257	int32		rel	"Unit multiplier exponent.
 ch_dacq_name		258	string		-	"Name of the channel in the data acquisition system. Corresponds to fiffChInfoRec.name."
-#<reserved>		259
+ch_coil_type		259	int32		-	"Coil type in coil_def.dat"
 
 #==============================================================================================================
 #
@@ -636,34 +636,12 @@ alias_tag(proj_item_ch_name_list) sparse_ch_name_list
 xplotter_layout         3501	string      -	"Xplotter layout tag"
 
 #==============================================================================================================
-#               3502...
-#               3799          Reserved for MNE estimates (MHa)
+#		3502...
+#		3999          Reserved for MNE estimates (MHa)
 #
 # This range is reserved for MGH and Matti Hamalainen for developing
-# MNE software.
+# MNE software. See DictionaryTags_MNE.txt.
 #
-# THIS TAG RANGE IS POTENTIALLY CONFIDENTIAL INFORMATION.
-# DO NOT PUBLISH WITHOUT PERMISSION.
-#==============================================================================================================
-#<reserved>  		3502    -
-#...
-#<reserved>		3799    -
-#==============================================================================================================
-:id mne
-#==============================================================================================================
-ch_name_list            3507	string      -	"List of channel names"
-
-
-#==============================================================================================================
-#
-#		3800...
-#		3999	    Range of free tags
-#
-#<free>  		3800    -
-#...
-#<free>			3999    -
-#
-#==============================================================================================================
 
 #==============================================================================================================
 #
@@ -690,7 +668,16 @@ vol_block_size          4014	int32		card	"Block size in bytes"
 vol_directory           4015	void		-	"Contents of the volume in a special format; the data type will be FIFF_VOID"
 #<free>                 4016
 #...			...
-#<free>                 5000
+#<free>                 4099
+
+#==============================================================================================================
+:channel info extension
+#==============================================================================================================
+#<free>			4100
+ch_coord_frame		4101	int32      -	"Channel coordinate frame"
+#<free>                 4102
+#...			...
+#<free>                 4999
 
 
 #==============================================================================================================

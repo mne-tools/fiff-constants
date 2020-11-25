@@ -80,6 +80,7 @@ hpi_result		109	tagged   "Result of a HPI fitting procedure.
 hpi_coil		110	tagged   "Data acquired from one HPI coil.
 project			111	tagged   "Information about the project under which the data were acquired."
 continuous_data		112	tagged   "Continuous data is processed raw data."
+ch_info			113	tagged   "Extra channel information."
 void			114	tagged   "Nothing, reserved space, invalidated data etc."
 events			115	tagged   "Information about the events detected on the trigger channels during data acquisition."
 index			116	tagged   "An index of file id/file name pairs."
