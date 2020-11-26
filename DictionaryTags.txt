@@ -681,7 +681,7 @@ vol_block_size          4014	int32		card	"Block size in bytes"
 vol_directory           4015	void		-	"Contents of the volume in a special format; the data type will be FIFF_VOID"
 #<free>                 4016
 #...			...
-#<free>                 4999
+#<free>                 5000
 
 #==============================================================================================================
 #
