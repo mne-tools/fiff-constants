@@ -354,8 +354,8 @@ time_stamp		305     int32*(3)	-       "Measurement time stamp, first element sec
 #==============================================================================================================
 :id channel_info
 #==============================================================================================================
-ch_coil_type		350	int32		-	"Coil type in coil_def.dat"
-ch_coord_frame		351	int32      -	"Channel coordinate frame"
+ch_coil_type		350	enum(coil)		-	"Coil type"
+ch_coord_frame		351	enum(coord)	-	"Channel coordinate frame"
 #<free>			352
 #...			...
 #<free>			399
