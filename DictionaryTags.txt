@@ -345,6 +345,19 @@ data_buffer2		304     databuffer2     -	"Data buffer with int32 time channel"
 time_stamp		305     int32*(3)	-       "Measurement time stamp, first element seconds, second microseconds, and third sample number"
 #<free>			306
 #...			...
+#<free>			349
+
+#==============================================================================================================
+#
+# Tags used for channel info
+#
+#==============================================================================================================
+:id channel_info
+#==============================================================================================================
+ch_coil_type		350	enum(coil)		-	"Coil type"
+ch_coord_frame		351	enum(coord)	-	"Channel coordinate frame"
+#<free>			352
+#...			...
 #<free>			399
 
 
@@ -636,34 +649,12 @@ alias_tag(proj_item_ch_name_list) sparse_ch_name_list
 xplotter_layout         3501	string      -	"Xplotter layout tag"
 
 #==============================================================================================================
-#               3502...
-#               3799          Reserved for MNE estimates (MHa)
+#		3502...
+#		3999          Reserved for MNE estimates (MHa)
 #
 # This range is reserved for MGH and Matti Hamalainen for developing
-# MNE software.
+# MNE software. See DictionaryTags_MNE.txt.
 #
-# THIS TAG RANGE IS POTENTIALLY CONFIDENTIAL INFORMATION.
-# DO NOT PUBLISH WITHOUT PERMISSION.
-#==============================================================================================================
-#<reserved>  		3502    -
-#...
-#<reserved>		3799    -
-#==============================================================================================================
-:id mne
-#==============================================================================================================
-ch_name_list            3507	string      -	"List of channel names"
-
-
-#==============================================================================================================
-#
-#		3800...
-#		3999	    Range of free tags
-#
-#<free>  		3800    -
-#...
-#<free>			3999    -
-#
-#==============================================================================================================
 
 #==============================================================================================================
 #
@@ -691,7 +682,6 @@ vol_directory           4015	void		-	"Contents of the volume in a special format
 #<free>                 4016
 #...			...
 #<free>                 5000
-
 
 #==============================================================================================================
 #
