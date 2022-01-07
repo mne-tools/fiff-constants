@@ -183,6 +183,7 @@ mne_rt_client_id            3701 ? "realtime client"
 mne_epochs_selection        3800 ? "the epochs selection"
 mne_epochs_drop_log         3801 ? "the drop log"
 mne_epochs_reject           3802 ? "the rejection parameters"
+mne_epochs_raw_sfreq        3803 ? "the original raw sfreq"
 
 #...			...
 #<reserved>		3812    -   3999   "Reserved for MNE sw."
