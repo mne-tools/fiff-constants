@@ -298,6 +298,8 @@ enum(coil) "Sensor coil type"
     fnirs_fd_phase             305  "fNIRS frequency domain phase"
     fnirs_td_gated_amplitude   306 "fNIRS time domain gated amplitude"
     fnirs_td_moments_amplitude 307 "fNIRS time domain moments amplitude"
+    eyetrack_pos    400  "Eye-tracking gaze position"
+    eyetrack_pupil  401  "Eye-tracking pupil size"
     mcg_42              1000  "For testing the MCG software"
     point_magnetometer  2000  "Simple point magnetometer"
     axial_grad_5cm      2001  "Generic axial gradiometer"
@@ -336,8 +338,6 @@ enum(coil) "Sensor coil type"
     kriss_grad		9001  "KRISS gradiometer"
     compumedics_adult_grad      9101  "Compumedics adult gradiometer"
     compumedics_pediatric_grad  9102  "Compumedics pediatric gradiometer"
-    eyetrack_pos    ????  "Eye-tracking gaze position"
-    eyetrack_pupil  ????  "Eye-tracking pupil size"
 }
 
 
