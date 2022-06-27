@@ -276,6 +276,7 @@ enum(ch_type) "Type of the channel"
     fnirs	   1100		     "Functional near-infrared spectroscopy"
     temperature	   1200		     "Temperature"
     gsr		   1300		     "Galvanic skin response"
+    eyetrack   1400          "Eye-tracking"
 }
 
 
@@ -335,6 +336,8 @@ enum(coil) "Sensor coil type"
     kriss_grad		9001  "KRISS gradiometer"
     compumedics_adult_grad      9101  "Compumedics adult gradiometer"
     compumedics_pediatric_grad  9102  "Compumedics pediatric gradiometer"
+    eyetrack_pos    ????  "Eye-tracking gaze position"
+    eyetrack_pupil  ????  "Eye-tracking pupil size"
 }
 
 
