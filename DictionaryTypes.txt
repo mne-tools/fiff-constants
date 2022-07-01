@@ -218,6 +218,9 @@ enum(unit) "FIFF value unit code"
     Am		202	"Am"
     Am_m2	203	"Am/m^2"
     Am_m3	204	"Am/m^3"
+    Px      210 "px"
+    Deg     211 "deg"
+    mm      212 "mm"
 }
 
 enum(unitm) "FIFF value multipliers"
