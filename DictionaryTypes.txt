@@ -274,7 +274,7 @@ enum(ch_type) "Type of the channel"
     dipole_wave    1000		     "Dipole time curve"
     goodness_fit   1001		     "Goodness of fit"
     fnirs	   1100		     "Functional near-infrared spectroscopy"
-    temperature	   1200		     "Functional near-infrared spectroscopy"
+    temperature	   1200		     "Temperature"
     galvanic	   1300		     "Galvanic skin response"
 }
 
