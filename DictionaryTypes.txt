@@ -275,7 +275,7 @@ enum(ch_type) "Type of the channel"
     goodness_fit   1001		     "Goodness of fit"
     fnirs	   1100		     "Functional near-infrared spectroscopy"
     temperature	   1200		     "Temperature"
-    galvanic	   1300		     "Galvanic skin response"
+    gsr		   1300		     "Galvanic skin response"
 }
 
 
