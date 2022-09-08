@@ -1,0 +1,29 @@
+name: Basic check
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  create:
+    branches: [ master ]
+    tags: [ '**' ]
+
+jobs:
+  check:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    env:
+      TZ: Europe/Berlin
+      FORCE_COLOR: true
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v3
+
+    - name: Run basic check
+      run: |
+        (! grep --color='auto' -P -n '[\x80-\xFF]' *.txt)
+
