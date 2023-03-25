@@ -218,6 +218,7 @@ enum(unit) "FIFF value unit code"
     Am		202	"Am"
     Am_m2	203	"Am/m^2"
     Am_m3	204	"Am/m^3"
+    Px      210 "px"
 }
 
 enum(unitm) "FIFF value multipliers"
@@ -276,6 +277,7 @@ enum(ch_type) "Type of the channel"
     fnirs	   1100		     "Functional near-infrared spectroscopy"
     temperature	   1200		     "Temperature"
     gsr		   1300		     "Galvanic skin response"
+    eyetrack   1400          "Eye-tracking"
 }
 
 
@@ -297,6 +299,8 @@ enum(coil) "Sensor coil type"
     fnirs_fd_phase             305  "fNIRS frequency domain phase"
     fnirs_td_gated_amplitude   306 "fNIRS time domain gated amplitude"
     fnirs_td_moments_amplitude 307 "fNIRS time domain moments amplitude"
+    eyetrack_pos    400  "Eye-tracking gaze position"
+    eyetrack_pupil  401  "Eye-tracking pupil size"
     mcg_42              1000  "For testing the MCG software"
     point_magnetometer  2000  "Simple point magnetometer"
     axial_grad_5cm      2001  "Generic axial gradiometer"
