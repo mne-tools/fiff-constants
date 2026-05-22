@@ -8,8 +8,14 @@
 # Structured objects (blocks)
 # Syntax version 1.4
 #
-# $Revision: 1.16 $
+# $Revision: 1.18 $
 # $Log: DictionaryIOD.txt,v $
+# Revision 1.18  2022/10/14 06:46:07  skesti
+# Added alias smartshied for ias.
+#
+# Revision 1.17  2020/12/09 11:06:43  jne
+# cleaned RCS comments
+#
 # Revision 1.16  2019/09/16 06:37:30  jne
 # maxshield_raw_data -> ias_raw_data
 # maxshield_aspect -> ias_aspect
@@ -50,7 +56,7 @@
 # Corrected some typos
 #
 # Revision 1.4  2006/08/30 10:28:45  jne
-# added definitions for smsh_raw_data, smsh_aspect, data_correction,
+# added definitions for smsh_raw_data, smsh_aspect, data_correction, 
 # channel_decoupler, sss_info, sss_cal_adjust, sss_st_info, sss_bases,
 # smartshield, processing_history, and processing_record
 #
@@ -64,7 +70,7 @@
 
 #
 # MEG/EEG
-#
+# 
 
 root			999	tagged   "Root block of a file (has not been used so far)."
 meas			100	tagged   "Measurement"
@@ -80,7 +86,6 @@ hpi_result		109	tagged   "Result of a HPI fitting procedure.
 hpi_coil		110	tagged   "Data acquired from one HPI coil.
 project			111	tagged   "Information about the project under which the data were acquired."
 continuous_data		112	tagged   "Continuous data is processed raw data."
-ch_info			113	tagged   "Extra channel information."
 void			114	tagged   "Nothing, reserved space, invalidated data etc."
 events			115	tagged   "Information about the events detected on the trigger channels during data acquisition."
 index			116	tagged   "An index of file id/file name pairs."
@@ -115,7 +120,7 @@ mri_seg_region		206	tagged   "Descriptions of one segmented region."
 
 alias_iod(structural_data)  mri
 alias_iod(volume_data)      mri_set
-alias_iod(volume_slice)     mri_slice
+alias_iod(volume_slice)     mri_slice   
 alias_iod(scenery)          mri_scenery
 alias_iod(scene)            mri_scene
 
@@ -161,3 +166,5 @@ ias			510	tagged	"IAS information."
 
 processing_history	900	tagged	"Processing history. Can contain multiple processing_record's"
 processing_record	901	tagged	"One processing record."
+
+alias_iod(ias)		smartshield
