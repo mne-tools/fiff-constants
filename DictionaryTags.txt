@@ -345,6 +345,19 @@ data_buffer2		304     databuffer2     -	"Data buffer with int32 time channel"
 time_stamp		305     int32*(3)	-       "Measurement time stamp, first element seconds, second microseconds, and third sample number"
 #<free>			306
 #...			...
+#<free>			349
+
+#==============================================================================================================
+#
+# Tags used for channel info
+#
+#==============================================================================================================
+:id channel_info
+#==============================================================================================================
+ch_coil_type		350	enum(coil)		-	"Coil type"
+ch_coord_frame		351	enum(coord)	-	"Channel coordinate frame"
+#<free>			352
+#...			...
 #<free>			399
 
 
