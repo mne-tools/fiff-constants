@@ -7,8 +7,11 @@
 #
 # Syntax version 1.4
 #
-# $Revision: 1.28 $
+# $Revision: 1.29 $
 # $Log: DictionaryTypes.txt,v $
+# Revision 1.29  2020/12/09 11:08:57  jne
+# added V_m2 = 117 and eeg_csd = 6
+#
 # Revision 1.28  2019/09/16 09:10:33  jne
 # compumedics_adult_grad 10001 -> 9101
 # compumedics_pediatric_grad 10002 -> 9102
@@ -289,12 +292,12 @@ enum(coil) "Sensor coil type"
     nm_24                  3  "Old 24 channel system in HUT"
     nm_mcg_axial           4  "The axial devices in the HUCS MCG system"
     eeg_bipolar            5  "Bipolar EEG electrode position"
-    eeg_csd                6  "CSD-transformed EEG electrodes"
+    eeg_csd		   6  "CSD-transformed EEG electrode"
     dipole               200  "Time-varying dipole definition. The coil info contains dipole location (r0) and direction (ex)"
-    fnirs_hbo                  300  "FNIRS oxyhemoglobin"
-    fnirs_hbr                  301  "FNIRS deoxyhemoglobin"
+    fnirs_hbo	         300  "FNIRS oxyhemoglobin"
+    fnirs_hbr	         301  "FNIRS deoxyhemoglobin"
     fnirs_cw_amplitude         302  "fNIRS continuous wave amplitude"
-    fnirs_od                   303  "fNIRS optical density"
+    fnirs_od		 303  "fNIRS optical density"
     fnirs_fd_ac_amplitude      304  "fNIRS frequency domain AC amplitude"
     fnirs_fd_phase             305  "fNIRS frequency domain phase"
     fnirs_td_gated_amplitude   306 "fNIRS time domain gated amplitude"

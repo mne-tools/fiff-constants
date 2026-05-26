@@ -6,6 +6,12 @@
 # All rights reserved.
 #
 # $Log: DictionaryStructures.txt,v $
+# Revision 1.10  2022/10/14 07:07:24  skesti
+# Added CHANNEL_DECOUPLER? and SSS_CAL_ADJUST? to MEAS_INFO.
+#
+# Revision 1.9  2020/12/09 11:07:29  jne
+# cleaned RCS comments
+#
 # Revision 1.8  2019/09/16 06:44:11  jne
 # maxshield_record -> ias_record
 # MAXSHIELD_RECORD -> IAS_RECORD
@@ -209,7 +215,7 @@ PROJECT_INFO =
 #======================================================================
 <begin>
 PROCESSING_HISTORY =
-	processing_history? {
+	processing_history {
 		PROCESSING_RECORD+
 	}
 <end>
@@ -223,11 +229,64 @@ PROCESSING_HISTORY =
 #======================================================================
 <begin>
 PROCESSING_RECORD =
-	processing_record? {
+	processing_record {
 		meas_date
 		experimenter
 		creator?
 		PROCESSING_INFO+
+	}
+<end>
+
+#======================================================================
+#
+# SSS information
+#
+#======================================================================
+:id sss_info
+#======================================================================
+<begin>
+SSS_INFO =
+	sss_info {
+		sss_job
+		sss_frame
+		sss_origin
+		sss_ord_in
+		sss_ord_out
+		sss_nmag
+		sss_components
+		sss_nfree
+	}
+<end>
+
+#======================================================================
+#
+# Cross-talk compensation information
+#
+#======================================================================
+:id channel_decoupler
+#======================================================================
+<begin>
+CHANNEL_DECOUPLER =
+	channel_decoupler {
+		meas_date
+		creator
+		decoupler_matrix
+		sparse_ch_name_list
+	}
+<end>
+
+#======================================================================
+#
+# SSS calibration adjustments
+#
+#======================================================================
+:id sss_cal_adjust
+#======================================================================
+<begin>
+SSS_CAL_ADJUST =
+	sss_cal_adjust {
+		sss_cal_chans
+		sss_cal_corrs
 	}
 <end>
 
@@ -245,26 +304,9 @@ SSS_RECORD =
 		meas_date
 		experimenter
 		creator
-		sss_info {
-			sss_job
-			sss_frame
-			sss_origin
-			sss_ord_in
-			sss_ord_out
-			sss_nmag
-			sss_components
-			sss_nfree
-		}
-		channel_decoupler {
-			meas_date
-			creator
-			decoupler_matrix
-			sparse_ch_name_list
-		}
-		sss_cal_adjust {
-			sss_cal_chans
-			sss_cal_corrs
-		}
+		SSS_INFO
+		CHANNEL_DECOUPLER
+		SSS_CAL_ADJUST
 	}
 <end>
 
@@ -428,7 +470,6 @@ MEAS_INFO =
 	meas_info {
 		experimenter?
 		description?
-		orig_file_guid?
 		events? {
 			event_channels
 			event_list
@@ -443,6 +484,8 @@ MEAS_INFO =
 		SUBJECT_INFO?
 		PROJECT_INFO?
 		SSP?
+		CHANNEL_DECOUPLER?
+		SSS_CAL_ADJUST?
 		DEVICE_INFO?
 		HELIUM_INFO?
 		meas_date
@@ -455,7 +498,6 @@ MEAS_INFO =
 		data_pack?
 		gantry_angle?
 		ch_info[nchan]
-		bad_chs?
 		hpi_subsystem? {
 			hpi_ncoil
 			event_channel
@@ -463,6 +505,7 @@ MEAS_INFO =
 				  event_bits
 			}
 		}
+		bad_chs?
 	}
 <end>
 
@@ -602,7 +645,7 @@ measurement {
 	processed_data {
 		continuous_data {
 			first_samp?
-			(data_buffer | data_skip |
+			(data_buffer| data_skip |
 			data_skip_samp)*
 		}
 	}
@@ -622,7 +665,7 @@ nop
 FILE_START
 measurement {
 	MEAS_INFO
-	PROCESSING_HISTORY
+	PROCESSING_HISTORY?
 	processed_data {
 		evoked+ {
 		       ref_event
@@ -653,7 +696,7 @@ nop
 FILE_START
 measurement {
 	MEAS_INFO
-	processing_history? {
+	processing_history {
 		IAS_RECORD
 	}
 	processed_data {
