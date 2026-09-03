@@ -92,6 +92,7 @@ enum(mne_surf) "MNE surface type"
 	mne_surf_left_hemi	    101    ""
 	mne_surf_right_hemi	    102    ""
 	mne_surf_meg_helmet	    201    ""
+	mne_surf_subcortical_offset	1000    "Offset added to subcortical aseg label values"
 }
 
 enum(mne_space) "MNE source space type"
